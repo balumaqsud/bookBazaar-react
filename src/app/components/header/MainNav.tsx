@@ -10,7 +10,7 @@ const MainNav = () => {
           <Box>
             <NavLink to="/">
               <img
-                src="/LOGO.png"
+                src="/icons/LOGO.png"
                 style={{ width: "120px", height: "60px" }}
                 alt="Book Bazaar"
               />
