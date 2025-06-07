@@ -1,0 +1,80 @@
+.navbar {
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.navbar .main-logo {
+  display: flex;
+  justify-content: start;
+  align-self: self-start;
+  background-color: red;
+  padding: 12px;
+}
+.navbar .main-logo .logo {
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+}
+a:link {
+  text-decoration: none;
+}
+
+.navbar .nav-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.navbar .nav-items .nav-item {
+  font-size: large;
+  font-weight: 500;
+  color: grey;
+}
+
+.navbar .nav-items .nav-item:hover {
+  font-size: large;
+  color: red;
+}
+
+.nav-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  background-color: red;
+  padding: 12px;
+  gap: 20px;
+}
+.nav-login .login-button {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: red;
+  gap: 14px;
+}
+.nav-login .login-side {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: red;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.nav-login .user-side {
+  display: flex;
+  justify-content: row;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: red;
+  padding: 8px;
+  gap: 3px;
+  cursor: pointer;
+}

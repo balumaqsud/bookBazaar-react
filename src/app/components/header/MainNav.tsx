@@ -1,20 +1,48 @@
 import React from "react";
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import "../../../css/header.css";
 
 const MainNav = () => {
   return (
     <div className="home-nav">
       <Container className="nav-container">
         <Stack className="navbar">
-          <Box>
+          <Box className="main-logo">
             <NavLink to="/">
-              <img
-                src="/icons/LOGO.png"
-                style={{ width: "120px", height: "60px" }}
-                alt="Book Bazaar"
-              />
+              <Typography>
+                <a href="/" className="logo">
+                  BB
+                </a>
+              </Typography>
             </NavLink>
+          </Box>
+          <Stack className="nav-items">
+            <Box>
+              <NavLink to="/" className={"nav-item"}>
+                HOME
+              </NavLink>
+            </Box>
+            <Box>
+              <NavLink to="/" className={"nav-item"}>
+                BOOKS
+              </NavLink>
+            </Box>
+            <Box>
+              <NavLink to="/" className={"nav-item"}>
+                ORDERS
+              </NavLink>
+            </Box>
+            <Box>
+              <NavLink to="/" className={"nav-item"}>
+                HELP
+              </NavLink>
+            </Box>
+          </Stack>
+          <Box className="nav-login">
+            <Button size="large" className="login-button">
+              Login
+            </Button>
           </Box>
         </Stack>
       </Container>
