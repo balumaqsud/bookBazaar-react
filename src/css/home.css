@@ -24,6 +24,10 @@
   margin-right: 40px;
   gap: 40px;
 }
+p {
+  color: grey;
+  font-size: 24px;
+}
 
 .banner-frame .banner-container .left-side .main-buttons {
   width: 340px;

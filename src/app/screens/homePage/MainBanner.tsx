@@ -17,8 +17,8 @@ const MainBanner = () => {
             <p>Best Seller Books</p>
             <Typography variant="h1">Read and Grow</Typography>
             <p>
-              "That's the thing about books. They let you travel without moving
-              your feet."
+              "That's the thing about books. They let you travel <br></br>
+              without moving your feet."
             </p>
           </Box>
           <Box className="main-buttons">
