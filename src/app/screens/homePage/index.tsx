@@ -1,11 +1,14 @@
 import React from "react";
-import "../../../css/home.css";
 import MainNav from "../../components/header/MainNav";
+import MainBanner from "./MainBanner";
+
+import "../../../css/home.css";
 
 const HomePage = () => {
   return (
     <div className="homepage">
       <MainNav />
+      <MainBanner />
     </div>
   );
 };

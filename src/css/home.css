@@ -2,3 +2,45 @@
   width: 100%;
   height: auto;
 }
+
+.homepage .banner-frame {
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+.banner-frame .banner-container {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  padding-top: 150px;
+  padding-bottom: 90px;
+}
+.banner-frame .banner-container .left-side {
+  width: auto;
+  justify-content: center;
+  opacity: 3;
+  margin-right: 40px;
+  gap: 40px;
+}
+
+.banner-frame .banner-container .left-side .main-buttons {
+  width: 340px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.banner-frame .banner-container .book-images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: "wrap";
+  gap: 10px;
+  width: 220px;
+  height: 220px;
+}
+
+.banner-frame .banner-container .book-images img {
+  width: 220px;
+  height: 220px;
+}
