@@ -11,6 +11,8 @@
 
 .sns-context {
   justify-content: space-between;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .foot-about p {

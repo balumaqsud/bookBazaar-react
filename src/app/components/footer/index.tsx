@@ -13,8 +13,6 @@ const Footers = styled.div`
 `;
 
 export default function Footer() {
-  const authMember = null;
-
   return (
     <Footers>
       <Container>
@@ -45,7 +43,7 @@ export default function Footer() {
               <Box className={"foot-category-link"}>
                 <Link to="/user-page">My Page</Link>
                 <Link to="/order">My Orders</Link>
-                {authMember && <Link to="/help">Terms/FAQ</Link>}
+                <Link to="/help">Terms/FAQ</Link>
                 <Link to="/contact">Contact</Link>
               </Box>
             </Box>
@@ -57,6 +55,7 @@ export default function Footer() {
                 <Link to="/order">Book Library</Link>
                 <Link to="/help">Random Book</Link>
                 <Link to="/contact">Latest Books</Link>
+                <Link to="/contact">Best Sellers</Link>
               </Box>
             </Box>
 

@@ -8,7 +8,7 @@ export default function Advertisement() {
   return (
     <Box
       component="ul"
-      sx={{ display: "flex", gap: 2, flexWrap: "wrap", p: 0, m: 0 }}
+      sx={{ display: "flex", gap: 2, flexWrap: "wrap", p: 0, m: 0, mb: 10 }}
     >
       <Card component="li" sx={{ minWidth: "100%", height: 540, flexGrow: 1 }}>
         <CardCover>

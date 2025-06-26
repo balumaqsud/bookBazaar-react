@@ -9,6 +9,7 @@ import LatestBooks from "./LatestBooks";
 import FeaturedBook from "./FeaturedBook";
 import Advertisement from "./advertisement";
 import Footer from "../../components/footer";
+import TopUsers from "./top-user";
 
 const HomePage = () => {
   return (
@@ -18,9 +19,10 @@ const HomePage = () => {
       <Brands />
       <BestSeller />
       <Advertisement />
-      <LatestBooks />
       <FeaturedBook />
+      <LatestBooks />
       <Statistics />
+      <TopUsers />
       <Footer />
     </div>
   );
