@@ -8,9 +8,7 @@ import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import CardOverflow from "@mui/joy/CardOverflow";
 import CardActions from "@mui/joy/CardActions";
-import IconButton from "@mui/joy/IconButton";
 import Typography from "@mui/joy/Typography";
-import SvgIcon from "@mui/joy/SvgIcon";
 import { Container, Stack } from "@mui/material";
 
 const TopUsers = () => {
@@ -30,9 +28,10 @@ const TopUsers = () => {
               <Card
                 sx={{
                   width: 234,
-                  height: 320,
+                  height: 260,
                   maxWidth: "100%",
-                  boxShadow: "lg",
+                  boxShadow: "md",
+                  paddingTop: 5,
                 }}
               >
                 <CardContent sx={{ alignItems: "center", textAlign: "center" }}>
@@ -59,17 +58,6 @@ const TopUsers = () => {
                     developer and I love to code.
                   </Typography>
                 </CardContent>
-                <CardOverflow sx={{ bgcolor: "background.level1" }}>
-                  <CardActions buttonFlex="1">
-                    <ButtonGroup
-                      variant="outlined"
-                      sx={{ bgcolor: "background.surface" }}
-                    >
-                      <Button>Message</Button>
-                      <Button>Connect</Button>
-                    </ButtonGroup>
-                  </CardActions>
-                </CardOverflow>
               </Card>
             );
           })}
