@@ -24,17 +24,17 @@ const MainNav = () => {
               </NavLink>
             </Box>
             <Box>
-              <NavLink to="/" className={"nav-item"}>
+              <NavLink to="/products" className={"nav-item"}>
                 BOOKS
               </NavLink>
             </Box>
             <Box>
-              <NavLink to="/" className={"nav-item"}>
+              <NavLink to="/orders" className={"nav-item"}>
                 ORDERS
               </NavLink>
             </Box>
             <Box>
-              <NavLink to="/" className={"nav-item"}>
+              <NavLink to="/help" className={"nav-item"}>
                 HELP
               </NavLink>
             </Box>

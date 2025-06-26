@@ -1,25 +1,45 @@
-import { Box, Container, Stack, Typography, Paper } from "@mui/material";
+import { Box, Container, Stack, Paper } from "@mui/material";
 import Button from "@mui/joy/Button";
 import React from "react";
+import Typography from "@mui/joy/Typography";
 
 const MainBanner = () => {
   return (
     <div className="banner-frame">
       <Container className="banner-container">
         <Stack className="left-side">
-          <Box>
-            <p>Best Seller Books</p>
-            <Typography variant="h1">Read and Grow</Typography>
-            <p>
-              "That's the thing about books. They let you travel <br></br>
-              without moving your feet."
-            </p>
+          <Box className="left-side-box" sx={{ lineHeight: 4 }}>
+            <Typography
+              level="h2"
+              color="success"
+              sx={{ maxWidth: 480, lineHeight: 2 }}
+            >
+              Best Seller Books
+            </Typography>
+            <Typography
+              level="h1"
+              color="warning"
+              noWrap
+              fontSize={78}
+              sx={{ maxWidth: 600, lineHeight: 2 }}
+            >
+              Read and Grow
+            </Typography>
+            <Typography sx={{ maxWidth: 480, lineHeight: 1.5 }} level="h3">
+              "That's the thing about{" "}
+              <Typography variant="soft">books.</Typography> They let you travel{" "}
+              without moving your{" "}
+              <Typography variant="solid" color="warning" noWrap>
+                feet."
+              </Typography>
+              .
+            </Typography>
           </Box>
           <Box className="main-buttons">
-            <Button size="lg" variant={"soft"} color="danger">
+            <Button size="lg" variant={"soft"} color="warning">
               Random Book
             </Button>
-            <Button size="lg" variant={"outlined"} color="danger">
+            <Button size="lg" variant={"outlined"} color="success">
               Visit Library
             </Button>
           </Box>

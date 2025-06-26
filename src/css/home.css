@@ -20,11 +20,14 @@
 }
 .banner-frame .banner-container .left-side {
   width: auto;
-  justify-content: center;
+  justify-content: start;
   opacity: 3;
   margin-right: 40px;
   gap: 40px;
+  padding-left: 10px;
+  padding-right: 40px;
 }
+
 p {
   color: grey;
   font-size: 24px;
@@ -41,19 +44,19 @@ p {
   flex-direction: row;
   flex-wrap: "wrap";
   gap: 10px;
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
 }
 
 .banner-frame .banner-container .book-images img {
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
 }
 
 .brand-frame {
   width: 100%;
   background-color: rgb(248, 248, 248);
-  margin: 20px;
+  opacity: 90%;
 }
 
 .brand-frame .brand-container {
