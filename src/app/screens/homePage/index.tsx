@@ -8,6 +8,7 @@ import Statistics from "./Statistics";
 import LatestBooks from "./LatestBooks";
 import FeaturedBook from "./FeaturedBook";
 import Advertisement from "./advertisement";
+import Footer from "../../components/footer";
 
 const HomePage = () => {
   return (
@@ -20,6 +21,7 @@ const HomePage = () => {
       <LatestBooks />
       <FeaturedBook />
       <Statistics />
+      <Footer />
     </div>
   );
 };

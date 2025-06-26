@@ -1,0 +1,44 @@
+.foot-category-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.foot-category-title {
+  font-size: 24px;
+  color: #c5c8c9;
+}
+
+.sns-context {
+  justify-content: space-between;
+}
+
+.foot-about p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 16px;
+  list-style: none;
+  line-height: 1;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.categories {
+  width: 100%;
+  padding: 10px;
+}
+
+.foot-category-link a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.foot-category-link a:hover {
+  text-decoration: underline;
+}
