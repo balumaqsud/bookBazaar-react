@@ -1,7 +1,6 @@
 import React from "react";
 import MainNav from "../../components/header/MainNav";
 import MainBanner from "./MainBanner";
-
 import "../../../css/home.css";
 import Brands from "./Brands";
 import BestSeller from "./BestSeller";

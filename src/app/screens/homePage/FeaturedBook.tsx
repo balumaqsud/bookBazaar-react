@@ -1,7 +1,34 @@
+import Button from "@mui/joy/Button";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 
 const FeaturedBook = () => {
-  return <div>FeaturedBook</div>;
+  return (
+    <div className="featured-frame">
+      <Container className="bestLate-container">
+        <Box className="featured-title">Featured Book</Box>
+        <Stack className="product-box">
+          <Box className="product-image">
+            <img src="/images/book2.jpg" alt="product-image" />
+          </Box>
+          <Box className="product-detail">
+            <p>Book Bazaar</p>
+            <Typography variant="h2">O'tgan Kunlar, Otabek</Typography>
+            <Typography variant="h6">
+              These low-profile sneakers are your perfect casual wear companion.
+              Featuring a durable rubber outer{" "}
+            </Typography>
+            <Box className="product-low">
+              <p>Price</p>
+              <Button size="lg" variant={"outlined"} color="danger">
+                Add to Cart
+              </Button>
+            </Box>
+          </Box>
+        </Stack>
+      </Container>
+    </div>
+  );
 };
 
 export default FeaturedBook;

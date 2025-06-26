@@ -2,8 +2,7 @@ import * as React from "react";
 import Box from "@mui/joy/Box";
 import Card from "@mui/joy/Card";
 import CardCover from "@mui/joy/CardCover";
-import CardContent from "@mui/joy/CardContent";
-import Typography from "@mui/joy/Typography";
+import { Container } from "@mui/material";
 
 export default function Advertisement() {
   return (
