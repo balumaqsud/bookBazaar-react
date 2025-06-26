@@ -33,7 +33,7 @@ p {
 .banner-frame .banner-container .left-side .main-buttons {
   width: 340px;
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .banner-frame .banner-container .book-images {
@@ -65,4 +65,29 @@ p {
   width: 110px;
   height: 100px;
   padding: 20px;
+}
+
+.bestLate-frame {
+  width: 100%;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.bestLate-title {
+  font-size: 36px;
+  color: grey;
+  margin: 20px;
+}
+
+.bestLate-card {
+  cursor: pointer;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 }

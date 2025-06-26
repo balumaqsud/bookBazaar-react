@@ -1,11 +1,5 @@
-import {
-  Box,
-  Button,
-  Container,
-  Stack,
-  Typography,
-  Paper,
-} from "@mui/material";
+import { Box, Container, Stack, Typography, Paper } from "@mui/material";
+import Button from "@mui/joy/Button";
 import React from "react";
 
 const MainBanner = () => {
@@ -22,11 +16,11 @@ const MainBanner = () => {
             </p>
           </Box>
           <Box className="main-buttons">
-            <Button variant="contained" color="warning" size="large">
+            <Button size="lg" variant={"soft"} color="danger">
               Random Book
             </Button>
-            <Button variant="outlined" color="warning" size="large">
-              Random Book
+            <Button size="lg" variant={"outlined"} color="danger">
+              Visit Library
             </Button>
           </Box>
         </Stack>

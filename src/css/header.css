@@ -1,7 +1,8 @@
 .home-nav {
   width: 100%;
-  background-color: rgb(248, 248, 248);
+  background-color: rgb(249, 248, 248);
   position: fixed;
+  z-index: 4;
 }
 .navbar {
   display: flex;
@@ -80,6 +81,6 @@ a:link {
   font-weight: 500;
   background-color: red;
   padding: 8px;
-  gap: 3px;
+  gap: 10px;
   cursor: pointer;
 }

@@ -45,7 +45,7 @@ const SecondNav = () => {
             </Box>
             <Box className="user-side">
               <AccountBoxIcon />
-              <Typography>Oliver</Typography>
+              <Typography color="white">Oliver</Typography>
             </Box>
           </Box>
         </Stack>

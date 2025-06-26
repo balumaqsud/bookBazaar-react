@@ -5,6 +5,7 @@ import UserPage from "./screens/userPage";
 import ProductPage from "./screens/productPage";
 import HelpPage from "./screens/helpPage";
 import HomePage from "./screens/homePage";
+import "../css/app.css";
 
 function App() {
   return (

@@ -4,6 +4,11 @@ import MainBanner from "./MainBanner";
 
 import "../../../css/home.css";
 import Brands from "./Brands";
+import BestSeller from "./BestSeller";
+import Statistics from "./Statistics";
+import LatestBooks from "./LatestBooks";
+import FeaturedBook from "./FeaturedBook";
+import Advertisement from "./advertisement";
 
 const HomePage = () => {
   return (
@@ -11,6 +16,11 @@ const HomePage = () => {
       <MainNav />
       <MainBanner />
       <Brands />
+      <BestSeller />
+      <Advertisement />
+      <LatestBooks />
+      <FeaturedBook />
+      <Statistics />
     </div>
   );
 };
