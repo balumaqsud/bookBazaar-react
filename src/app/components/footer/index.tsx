@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../../../css/footer.css";
+import Typography from "@mui/joy/Typography";
 
 const Footers = styled.div`
   width: 100%;
@@ -24,7 +25,7 @@ export default function Footer() {
             <Box>
               <img alt="footer_icon" width={"80px"} src={"/images/bb.png"} />
             </Box>
-            <Typography variant="h6">
+            <Typography level="title-md">
               {" "}
               Book Bazar is your online store, where you can find any book you
               wish!
@@ -39,7 +40,7 @@ export default function Footer() {
           </Stack>
           <Stack className="links" flexDirection={"row"}>
             <Box className="categories">
-              <Box className={"foot-category-title"}>Help</Box>
+              <Typography level="title-lg">Help</Typography>
               <Box className={"foot-category-link"}>
                 <Link to="/user-page">My Page</Link>
                 <Link to="/order">My Orders</Link>
@@ -49,7 +50,7 @@ export default function Footer() {
             </Box>
 
             <Box className="categories">
-              <Box className={"foot-category-title"}>Book Bazaar</Box>
+              <Typography level="title-lg">Book Bazaar</Typography>
               <Box className={"foot-category-link"}>
                 <Link to="/user-page">Home</Link>
                 <Link to="/order">Book Library</Link>
@@ -60,7 +61,7 @@ export default function Footer() {
             </Box>
 
             <Box className="categories">
-              <Box className={"foot-category-title"}>About us</Box>
+              <Typography level="title-lg">About Us</Typography>
               <Box flexDirection={"column"} className={"foot-about"}>
                 <p>Worldwide Shipment</p>
                 <p>+821029226111</p>
