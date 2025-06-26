@@ -6,9 +6,9 @@ import "../../../css/footer.css";
 
 const Footers = styled.div`
   width: 100%;
-  height: 440px;
+  height: 480px;
   display: flex;
-
+  background-color: rgb(249, 248, 248);
   background-size: cover;
 `;
 
@@ -21,7 +21,7 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack
             flexDirection={"column"}
-            style={{ width: "50%", marginRight: 80 }}
+            style={{ width: "50%", marginRight: 80, lineHeight: 1.5 }}
           >
             <Box>
               <img alt="footer_icon" width={"80px"} src={"/images/bb.png"} />

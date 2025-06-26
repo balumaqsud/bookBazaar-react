@@ -18,8 +18,7 @@
   flex-direction: column;
   justify-content: space-between;
   font-size: 16px;
-  list-style: none;
-  line-height: 1;
+  line-height: 1.5;
 }
 
 .links {
@@ -38,6 +37,7 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+  line-height: 2.5;
 }
 .foot-category-link a:hover {
   text-decoration: underline;
