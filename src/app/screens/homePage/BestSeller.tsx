@@ -22,12 +22,7 @@ const BestSeller = () => {
             return (
               <Card sx={{ minHeight: "340px", width: 226 }}>
                 <CardCover>
-                  <img
-                    src="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320"
-                    srcSet="https://images.unsplash.com/photo-1542773998-9325f0a098d7?auto=format&fit=crop&w=320&dpr=2 2x"
-                    loading="lazy"
-                    alt=""
-                  />
+                  <img src="/images/book1.jpg" loading="lazy" alt="book" />
                 </CardCover>
                 <CardCover
                   sx={{

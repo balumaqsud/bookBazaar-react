@@ -3,6 +3,7 @@
   background-color: rgb(249, 248, 248);
   position: fixed;
   z-index: 4;
+  opacity: 95%;
 }
 .navbar {
   display: flex;

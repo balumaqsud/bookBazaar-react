@@ -16,10 +16,7 @@ export default function Advertisement() {
             muted
             poster="https://assets.codepen.io/6093409/river.jpg"
           >
-            <source
-              src="https://assets.codepen.io/6093409/river.mp4"
-              type="video/mp4"
-            />
+            <source src="/images/video.mp4" type="video/mp4" />
           </video>
         </CardCover>
       </Card>

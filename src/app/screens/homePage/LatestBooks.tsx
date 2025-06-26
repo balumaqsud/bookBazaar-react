@@ -28,12 +28,7 @@ const LatestBooks = () => {
               <Card sx={{ width: 226, height: 320, boxShadow: "lg" }}>
                 <CardOverflow>
                   <AspectRatio sx={{ minWidth: 200 }}>
-                    <img
-                      src="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286"
-                      srcSet="https://images.unsplash.com/photo-1593121925328-369cc8459c08?auto=format&fit=crop&w=286&dpr=2 2x"
-                      loading="lazy"
-                      alt=""
-                    />
+                    <img src="/images/book3.jpg" loading="lazy" alt="book" />
                   </AspectRatio>
                 </CardOverflow>
                 <CardContent>
