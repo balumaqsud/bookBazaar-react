@@ -13,8 +13,8 @@ class ProductService {
     try {
       ///product/all?order=productPrice&page=1&limit=2&productCollection=DISH
       let url = `${this.path}/product/all?order=${input.order}&page=${input.page}&limit=${input.limit}`;
-      if (input.productCollection) {
-        url += `&productCollection=${input.productCollection}`;
+      if (input.productCategory) {
+        url += `&productCollection=${input.productCategory}`;
       }
       if (input.search) {
         url += `&search=${input.search}`;

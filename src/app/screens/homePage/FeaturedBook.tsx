@@ -21,9 +21,12 @@ const FeaturedBook = () => {
               Featuring a durable rubber outer{" "}
             </Typography>
             <Box className="product-low">
-              <p>Price</p>
+              <p>$55</p>
               <Button size="lg" variant={"outlined"} color="neutral">
                 Add to Cart
+              </Button>
+              <Button size="lg" variant={"solid"} color="neutral">
+                Make Order
               </Button>
             </Box>
           </Box>

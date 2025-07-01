@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import OrderPage from "./screens/orderPage";
 import UserPage from "./screens/userPage";
 import ProductPage from "./screens/productPage";
@@ -10,13 +10,26 @@ import "../css/app.css";
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/orders" element={<OrderPage />} />
-        <Route path="/user" element={<UserPage />} />
-        <Route path="/products" element={<ProductPage />} />
-        <Route path="/help" element={<HelpPage />} />
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+      <Switch>
+        <Route path="/orders">
+          <OrderPage />
+        </Route>
+        <Route path="/users">
+          <UserPage />
+        </Route>
+        <Route path="/products">
+          <ProductPage />
+        </Route>
+        <Route path="/help">
+          <HelpPage />
+        </Route>
+        <Route path="/member-page">
+          <UserPage />
+        </Route>
+        <Route path="/">
+          <HomePage />
+        </Route>
+      </Switch>
     </>
   );
 }
