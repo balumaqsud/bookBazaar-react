@@ -1,12 +1,7 @@
 import React from "react";
-import SecondNav from "../../components/header/SecondNav";
 
 const OrderPage = () => {
-  return (
-    <div>
-      <SecondNav />
-    </div>
-  );
+  return <div>hh</div>;
 };
 
 export default OrderPage;

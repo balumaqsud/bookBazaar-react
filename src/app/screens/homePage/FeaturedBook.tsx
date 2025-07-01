@@ -22,10 +22,10 @@ const FeaturedBook = () => {
             </Typography>
             <Box className="product-low">
               <p>$55</p>
-              <Button size="lg" variant={"outlined"} color="neutral">
-                Add to Cart
+              <Button size="lg" variant={"soft"} color="warning">
+                Add to Card
               </Button>
-              <Button size="lg" variant={"solid"} color="neutral">
+              <Button size="lg" variant={"outlined"} color="success">
                 Make Order
               </Button>
             </Box>
