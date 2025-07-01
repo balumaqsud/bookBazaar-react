@@ -7,7 +7,6 @@ import HelpPage from "./screens/helpPage";
 import HomePage from "./screens/homePage";
 import "../css/app.css";
 import MainNav from "./components/header/MainNav";
-import SecondNav from "./components/header/SecondNav";
 import MemberService from "./services/MemberService";
 import { sweetErrorHandling, sweetTopSuccessAlert } from "../libs/sweetAlerts";
 import { Messages } from "../libs/config";
@@ -51,35 +50,20 @@ function App() {
   };
   return (
     <>
-      {location.pathname === "/" ? (
-        <MainNav
-          cardItems={cardItems}
-          onAdd={onAdd}
-          onDelete={onDelete}
-          onRemove={onRemove}
-          onDeleteAll={onDeleteAll}
-          setLoginOpen={setLoginOpen}
-          setSignupOpen={setSignupOpen}
-          anchorEl={anchorEl}
-          handleLogoutClick={handleLogoutClick}
-          handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest}
-        />
-      ) : (
-        <SecondNav
-          cardItems={cardItems}
-          onAdd={onAdd}
-          onDelete={onDelete}
-          onRemove={onRemove}
-          onDeleteAll={onDeleteAll}
-          setLoginOpen={setLoginOpen}
-          setSignupOpen={setSignupOpen}
-          anchorEl={anchorEl}
-          handleLogoutClick={handleLogoutClick}
-          handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest}
-        />
-      )}
+      <MainNav
+        cardItems={cardItems}
+        onAdd={onAdd}
+        onDelete={onDelete}
+        onRemove={onRemove}
+        onDeleteAll={onDeleteAll}
+        setLoginOpen={setLoginOpen}
+        setSignupOpen={setSignupOpen}
+        anchorEl={anchorEl}
+        handleLogoutClick={handleLogoutClick}
+        handleCloseLogout={handleCloseLogout}
+        handleLogoutRequest={handleLogoutRequest}
+      />
+
       <Switch>
         <Route path="/orders">
           <OrderPage />

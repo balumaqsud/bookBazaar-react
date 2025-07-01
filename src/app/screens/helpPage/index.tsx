@@ -6,12 +6,12 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Button from "@mui/material/Button";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import "../../../css/help.css";
 import { faq } from "../../../libs/data/faq";
 import { terms } from "../../../libs/data/terms";
+import Button from "@mui/joy/Button";
 
 export default function HelpPage() {
   const [value, setValue] = React.useState("1");
@@ -45,7 +45,7 @@ export default function HelpPage() {
                 <Stack className={"rules-box"}>
                   <Box className={"rules-frame"}>
                     {terms.map((value, number) => {
-                      return <p key={number}>{value}</p>;
+                      return <Typography key={number}>{value}</Typography>;
                     })}
                   </Box>
                 </Stack>
@@ -74,7 +74,7 @@ export default function HelpPage() {
                 <Stack className={"admin-letter-box"}>
                   <Stack className={"admin-letter-container"}>
                     <Box className={"admin-letter-frame"}>
-                      <span>Contact us!</span>
+                      <p>Contact us!</p>
                       <p>Fill out below form to send a message!</p>
                     </Box>
                     <form
@@ -110,8 +110,8 @@ export default function HelpPage() {
                         justifyContent={"flex-end"}
                         sx={{ mt: "30px" }}
                       >
-                        <Button type={"submit"} variant="contained">
-                          Send
+                        <Button size="lg" variant={"outlined"} color="success">
+                          Send Message
                         </Button>
                       </Box>
                     </form>

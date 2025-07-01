@@ -64,24 +64,5 @@ a:link {
   font-weight: 500;
   background-color: red;
   gap: 14px;
-}
-.nav-login .login-side {
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: red;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.nav-login .user-side {
-  display: flex;
-  justify-content: row;
-  color: white;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: red;
-  padding: 8px;
-  gap: 10px;
-  cursor: pointer;
+  border: 0;
 }
