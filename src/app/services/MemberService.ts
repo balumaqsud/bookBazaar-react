@@ -26,17 +26,18 @@ class MemberService {
     }
   }
 
-  public async getRestaurant(): Promise<Member> {
+  public async getAdmin(): Promise<Member> {
     try {
-      let url = `${this.path}/member/restaurant`;
+      let url = `${this.path}/member/admin`;
       const result = await axios.get(url);
       console.log("tt", result.data);
       return result.data;
     } catch (error) {
-      console.log("error, restaurant", error);
+      console.log("error, admin", error);
       throw error;
     }
   }
+
   public async signup(input: MemberInput): Promise<Member> {
     try {
       let url = `${this.path}/member/signup`;
@@ -81,7 +82,7 @@ class MemberService {
     try {
       const formData = new FormData();
       formData.append("memberNick", input.memberNick || "");
-      formData.append("memberPhone", input.memberPhone || "");
+      formData.append("memberPhone", input.memberEmail || "");
       formData.append("memberAddress", input.memberAddress || "");
       formData.append("memberDescription", input.memberDescription || "");
       formData.append("memberImage", input.memberImage || "");

@@ -47,7 +47,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
   const classes = useStyles();
   const [memberNick, setMemberNick] = useState<string>("");
-  const [memberPhone, setMemberPhone] = useState<string>("");
+  const [memberEmail, setMemberEmail] = useState<string>("");
   const [memberPassword, setMemberPassword] = useState<string>("");
   const { setAuthMember } = useGlobals();
 
@@ -55,8 +55,8 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const usernameHandler = (e: T) => {
     setMemberNick(e.target.value);
   };
-  const phoneNumberHandler = (e: T) => {
-    setMemberPhone(e.target.value);
+  const EmailNumberHandler = (e: T) => {
+    setMemberEmail(e.target.value);
   };
   const passwordHandler = (e: T) => {
     setMemberPassword(e.target.value);
@@ -72,12 +72,12 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const signupRequestHandler = async () => {
     try {
       const match =
-        memberNick !== "" && memberPhone !== "" && memberPassword !== "";
+        memberNick !== "" && memberEmail !== "" && memberPassword !== "";
       if (!match) throw new Error(Messages.error3);
 
       const signupInput: MemberInput = {
         memberNick: memberNick,
-        memberPhone: memberPhone,
+        memberEmail: memberEmail,
         memberPassword: memberPassword,
       };
 
@@ -149,9 +149,9 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
               <TextField
                 sx={{ width: "100%", my: "17px" }}
                 id="outlined-basic"
-                label="phone number"
+                label="Email"
                 variant="outlined"
-                onChange={phoneNumberHandler}
+                onChange={EmailNumberHandler}
               />
               <TextField
                 id="outlined-basic"

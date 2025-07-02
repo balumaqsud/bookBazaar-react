@@ -81,14 +81,14 @@ const MainNav = (props: HomeNavbarProps) => {
                 ORDERS
               </NavLink>
             </Box>
+            {authMember ? (
+              <Box>
+                <NavLink to="/member-page" className={"nav-item"}>
+                  PROFILE
+                </NavLink>
+              </Box>
+            ) : null}
           </Stack>
-          {authMember ? (
-            <Box className="hover-line">
-              <NavLink to="/member-page" className={"nav-item"}>
-                Profile
-              </NavLink>
-            </Box>
-          ) : null}
           <Box className="nav-login">
             <Basket
               cardItems={cardItems}
@@ -106,6 +106,13 @@ const MainNav = (props: HomeNavbarProps) => {
                 >
                   Login
                 </Button>
+                <Button
+                  variant="outlined"
+                  className="login-button"
+                  onClick={() => setSignupOpen(true)}
+                >
+                  Signup
+                </Button>
               </Box>
             ) : (
               <img
@@ -113,7 +120,7 @@ const MainNav = (props: HomeNavbarProps) => {
                 src={
                   authMember?.memberImage
                     ? `${serverApi}/${authMember?.memberImage}`
-                    : "/icons/default-user.svg"
+                    : "/images/book1.jpg"
                 }
                 aria-haspopup={"true"}
                 alt=""
@@ -130,11 +137,11 @@ const MainNav = (props: HomeNavbarProps) => {
                 elevation: 0,
                 sx: {
                   overflow: "visible",
-                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                  filter: "drop-shadow(0px 2px 8px rgba(240, 233, 233, 0.32))",
                   mt: 1.5,
                   "& .MuiAvatar-root": {
-                    width: 32,
-                    height: 32,
+                    width: 30,
+                    height: 30,
                     ml: -0.5,
                     mr: 1,
                   },
@@ -155,9 +162,9 @@ const MainNav = (props: HomeNavbarProps) => {
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
-              <MenuItem onClick={handleLogoutRequest} className="login-button">
+              <MenuItem onClick={handleLogoutRequest} className="logout-button">
                 <ListItemIcon>
-                  <Logout fontSize="small" style={{ color: "blue" }} />
+                  <Logout fontSize="small" style={{ color: "grey" }} />
                 </ListItemIcon>
                 Logout
               </MenuItem>

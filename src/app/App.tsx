@@ -13,7 +13,7 @@ import { Messages } from "../libs/config";
 import { useGlobals } from "./hooks/useGlobals";
 import useBasket from "./hooks/useBasket";
 import Footer from "./components/footer";
-
+import AuthenticationModal from "./components/auth";
 import "../css/header.css";
 import "../css/footer.css";
 
@@ -85,6 +85,12 @@ function App() {
         </Route>
       </Switch>
       <Footer />
+      <AuthenticationModal
+        loginOpen={loginOpen}
+        signupOpen={signupOpen}
+        handleSignupClose={handleSignupClose}
+        handleLoginClose={handleLoginClose}
+      />
     </>
   );
 }
