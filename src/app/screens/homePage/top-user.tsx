@@ -28,6 +28,10 @@ const TopUsers = () => {
                   maxWidth: "100%",
                   boxShadow: "md",
                   paddingTop: 5,
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    transition: "transform 0.6s ease",
+                  },
                 }}
               >
                 <CardContent sx={{ alignItems: "center", textAlign: "center" }}>

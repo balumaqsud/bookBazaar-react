@@ -72,6 +72,7 @@ a:link {
   height: 44px;
   border-radius: 50%;
   background-color: #000000;
+  cursor: pointer;
 }
 
 .logout-button {

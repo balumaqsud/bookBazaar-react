@@ -20,7 +20,16 @@ const BestSeller = () => {
         >
           {array.map((value, number) => {
             return (
-              <Card sx={{ minHeight: "340px", width: 226 }}>
+              <Card
+                sx={{
+                  minHeight: "340px",
+                  width: 226,
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    transition: "transform 0.6s ease",
+                  },
+                }}
+              >
                 <CardCover>
                   <img src="/images/book1.jpg" loading="lazy" alt="book" />
                 </CardCover>

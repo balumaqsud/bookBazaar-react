@@ -25,7 +25,17 @@ const LatestBooks = () => {
         >
           {array.map((value, number) => {
             return (
-              <Card sx={{ width: 226, height: 320, boxShadow: "lg" }}>
+              <Card
+                sx={{
+                  width: 226,
+                  height: 320,
+                  boxShadow: "lg",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    transition: "transform 0.6s ease",
+                  },
+                }}
+              >
                 <CardOverflow>
                   <AspectRatio sx={{ minWidth: 200 }}>
                     <img src="/images/book3.jpg" loading="lazy" alt="book" />
