@@ -2,10 +2,8 @@
   width: 100%;
   height: auto;
   display: flex;
-  background: #f8f8ff;
-  display: flex;
   flex-direction: column;
-  padding-top: 90px;
+  padding-top: 140px;
 }
 
 .products .avatar-box {
@@ -30,13 +28,13 @@
 }
 /* for*/
 
-.products .dishes-filter-section {
+.products .filter-section {
   width: 100%;
   display: flex;
   margin-top: 50px;
 }
 
-.products .dishes-filter-section .dishes-filter-box {
+.products .filter-section .filter-box {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -51,22 +49,6 @@
   flex-direction: row;
 }
 
-.products-page .products .product-category {
-  width: 50px;
-  height: auto;
-  display: flex;
-}
-
-.products .list-category-section .product-category .category-main {
-  display: flex;
-  gap: 10px;
-}
-.products-page .product-category .category-main button {
-  min-width: auto;
-  margin-right: 10px;
-}
-
-/**/
 .products .list-category-section .products-wrapper {
   display: flex;
   flex-direction: row;
@@ -84,6 +66,9 @@
   flex-direction: column;
   margin-bottom: 20px;
   cursor: pointer;
+}
+.pagination-section {
+  margin-bottom: 40px;
 }
 
 /** ChosenProduct **/

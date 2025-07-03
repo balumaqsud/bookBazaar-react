@@ -25,7 +25,7 @@ const BestSeller = () => {
 
   //chosen product detail page
   const chosenProductHandler = (id: string) => {
-    history.push(`/products/${id}`);
+    history.push(`/books/${id}`);
   };
 
   return (

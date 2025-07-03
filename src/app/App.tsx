@@ -81,7 +81,7 @@ function App() {
           <UserPage />
         </Route>
         <Route path="/">
-          <HomePage />
+          <HomePage onAdd={onAdd} />
         </Route>
       </Switch>
       <Footer />

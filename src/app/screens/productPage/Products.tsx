@@ -154,8 +154,8 @@ const Products = (props: ProductsProps) => {
               </Button>
             </div>
           </Stack>
-          <Stack className="dishes-filter-section">
-            <Stack className="dishes-filter-box">
+          <Stack className="filter-section">
+            <Stack className="filter-box">
               <Dropdown>
                 <MenuButton>Category...</MenuButton>
                 <Menu>
@@ -379,6 +379,15 @@ const Products = (props: ProductsProps) => {
                         </Typography>
                         <Typography textColor="neutral.300">
                           {ele.productCategory}
+                          <Chip
+                            component="span"
+                            size="sm"
+                            variant="solid"
+                            color="success"
+                            sx={{ marginLeft: 0.7, marginBottom: 0.2 }}
+                          >
+                            {ele.productView} views
+                          </Chip>
                         </Typography>
                       </CardContent>
 
@@ -406,7 +415,7 @@ const Products = (props: ProductsProps) => {
                   );
                 })
               ) : (
-                <Typography level="h2" color="success">
+                <Typography level="h2" color="success" sx={{ marginTop: 10 }}>
                   No products available yet
                 </Typography>
               )}
@@ -427,7 +436,6 @@ const Products = (props: ProductsProps) => {
                     next: ArrowForwardIcon,
                   }}
                   {...item}
-                  color={"secondary"}
                 />
               )}
               onChange={paginationHandler}

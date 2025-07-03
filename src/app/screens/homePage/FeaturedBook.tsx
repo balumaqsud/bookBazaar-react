@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { Product } from "../../../libs/types/product";
 import { serverApi } from "../../../libs/config";
 import Chip from "@mui/joy/Chip";
+import { CardItem } from "../../../libs/types/search";
 
 const featuredBookRetriever = createSelector(
   retrieveFeaturedBook,
@@ -15,15 +16,19 @@ const featuredBookRetriever = createSelector(
     featuredBook,
   })
 );
+interface HomeProps {
+  onAdd: (item: CardItem) => void;
+}
 
-const FeaturedBook = () => {
+const FeaturedBook = (props: HomeProps) => {
+  const { onAdd } = props;
   const { featuredBook } = useSelector(featuredBookRetriever);
 
   const history = useHistory();
 
   //chosen product detail page
   const chosenProductHandler = (id: string) => {
-    history.push(`/products/${id}`);
+    history.push(`/books/${id}`);
   };
   return (
     <div className="featured-frame">
@@ -48,7 +53,22 @@ const FeaturedBook = () => {
                 <Typography variant="h6">{ele.productDesc}</Typography>
                 <Box className="product-low">
                   <p>${ele.productPrice}</p>
-                  <Button size="lg" variant={"soft"} color="warning">
+                  <Button
+                    size="lg"
+                    variant={"soft"}
+                    color="warning"
+                    onClick={(e) => {
+                      console.log("clicked");
+                      onAdd({
+                        _id: ele._id,
+                        quantity: 1,
+                        name: ele.productName,
+                        price: ele.productPrice,
+                        image: ele.productImages[0],
+                      });
+                      e.stopPropagation();
+                    }}
+                  >
                     Add to Card
                   </Button>
                   <Button
@@ -57,7 +77,7 @@ const FeaturedBook = () => {
                     color="success"
                     onClick={() => chosenProductHandler(ele._id)}
                   >
-                    Make Order
+                    See the Book
                   </Button>
                 </Box>
               </Box>

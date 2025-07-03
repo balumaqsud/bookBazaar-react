@@ -21,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import MemberService from "../../services/MemberService";
 import ProductService from "../../services/ProductService";
+import { CardItem } from "../../../libs/types/search";
 
 //REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -31,7 +32,12 @@ const actionDispatch = (dispatch: Dispatch) => ({
   setTopUsers: (data: Member[]) => dispatch(setTopUsers(data)),
 });
 
-const HomePage = () => {
+interface HomeProps {
+  onAdd: (item: CardItem) => void;
+}
+
+const HomePage = (props: HomeProps) => {
+  const { onAdd } = props;
   const {
     setBestSellers,
     setLatestBooks,
@@ -110,7 +116,7 @@ const HomePage = () => {
       <Brands />
       <BestSeller />
       <Advertisement />
-      <FeaturedBook />
+      <FeaturedBook onAdd={onAdd} />
       <LatestBooks />
       <Statistics />
       <TopUsers />
