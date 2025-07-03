@@ -46,7 +46,12 @@ const FeaturedBook = () => {
                   <Button size="lg" variant={"soft"} color="warning">
                     Add to Card
                   </Button>
-                  <Button size="lg" variant={"outlined"} color="success">
+                  <Button
+                    size="lg"
+                    variant={"outlined"}
+                    color="success"
+                    onClick={() => chosenProductHandler(ele._id)}
+                  >
                     Make Order
                   </Button>
                 </Box>

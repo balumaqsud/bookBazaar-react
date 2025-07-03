@@ -9,9 +9,28 @@ import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { Box, Container, Stack } from "@mui/material";
+import { retrieveLatestBooks } from "./selector";
+import { createSelector } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { serverApi } from "../../../libs/config";
+
+const latestBooksRetriever = createSelector(
+  retrieveLatestBooks,
+  (latestBooks) => ({
+    latestBooks,
+  })
+);
 
 const LatestBooks = () => {
+  const { latestBooks } = useSelector(latestBooksRetriever);
+  const history = useHistory();
   const array = ["tashkent", "samarqand", "navoiy", "chirchiq"];
+
+  //chosen product detail page
+  const chosenProductHandler = (id: string) => {
+    history.push(`/products/${id}`);
+  };
 
   return (
     <div className="bestLate-frame">
@@ -23,9 +42,11 @@ const LatestBooks = () => {
           spacing={2}
           flexWrap="wrap"
         >
-          {array.map((value, number) => {
+          {latestBooks.map((ele) => {
+            const imagePath = `${serverApi}/${ele.productImages[0]}`;
             return (
               <Card
+                key={ele._id}
                 sx={{
                   width: 226,
                   height: 320,
@@ -38,20 +59,19 @@ const LatestBooks = () => {
               >
                 <CardOverflow>
                   <AspectRatio sx={{ minWidth: 200 }}>
-                    <img src="/images/book3.jpg" loading="lazy" alt="book" />
+                    <img src={imagePath} loading="lazy" alt="book" />
                   </AspectRatio>
                 </CardOverflow>
                 <CardContent>
-                  <Typography level="body-xs">{value}</Typography>
+                  <Typography level="body-xs">{ele.productCategory}</Typography>
                   <Link
                     href="#product-card"
                     color="neutral"
                     textColor="text.primary"
                     overlay
-                    endDecorator={<ArrowOutwardIcon />}
                     sx={{ fontWeight: "md" }}
                   >
-                    Super Rockez A400
+                    ${ele.productPrice}
                   </Link>
 
                   <Typography
@@ -64,18 +84,23 @@ const LatestBooks = () => {
                         variant="soft"
                         color="success"
                       >
-                        Lowest price
+                        {ele.productType}
                       </Chip>
                     }
                   >
-                    2,900 THB
+                    {ele.productName}
                   </Typography>
                   <Typography level="body-sm">
-                    (Only <b>7</b> left in stock!)
+                    (Only <b>{ele.productLeftCount}</b> left in stock!)
                   </Typography>
                 </CardContent>
                 <CardOverflow>
-                  <Button variant="solid" color="danger" size="lg">
+                  <Button
+                    variant="solid"
+                    color="danger"
+                    size="lg"
+                    onClick={() => chosenProductHandler(ele._id)}
+                  >
                     Add to cart
                   </Button>
                 </CardOverflow>

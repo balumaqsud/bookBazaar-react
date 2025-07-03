@@ -42,6 +42,7 @@ const BestSeller = () => {
             return (
               <Card
                 key={ele._id}
+                onClick={() => chosenProductHandler(ele._id)}
                 sx={{
                   minHeight: "340px",
                   width: 226,
