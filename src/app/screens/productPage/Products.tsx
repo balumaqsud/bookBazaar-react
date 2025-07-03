@@ -9,7 +9,16 @@ import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Input from "@mui/joy/Input";
-import { CssVarsProvider } from "@mui/joy";
+import {
+  AspectRatio,
+  Card,
+  CardContent,
+  CardCover,
+  CardOverflow,
+  Chip,
+  CssVarsProvider,
+  Link,
+} from "@mui/joy";
 import { setProducts } from "./slice";
 import { Dispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,7 +58,16 @@ const Products = (props: ProductsProps) => {
     page: 1,
     limit: 8,
     order: "createdAt",
-    productCategory: ProductCategory.HISTORY,
+    productCategory:
+      ProductCategory.POETRY ||
+      ProductCategory.ROMANCE ||
+      ProductCategory.FANTASY ||
+      ProductCategory.HISTORY ||
+      ProductCategory.HORROR ||
+      ProductCategory.SCIENCE_FICTION ||
+      ProductCategory.THRILLER ||
+      ProductCategory.ROMANCE ||
+      ProductCategory.ADVENTURE,
     search: "",
   });
 
@@ -220,11 +238,74 @@ const Products = (props: ProductsProps) => {
                       POETRY
                     </Button>
                   </MenuItem>
-                  <MenuItem>My account</MenuItem>
-                  <MenuItem>My account</MenuItem>
-                  <MenuItem>My account</MenuItem>
-                  <MenuItem>My account</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory ===
+                        ProductCategory.SCIENCE_FICTION
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.SCIENCE_FICTION);
+                      }}
+                    >
+                      SCIENCE_FICTION
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory ===
+                        ProductCategory.ROMANCE
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.ROMANCE);
+                      }}
+                    >
+                      ROMANCE
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory ===
+                        ProductCategory.HISTORY
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.HISTORY);
+                      }}
+                    >
+                      HISTORY
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory ===
+                        ProductCategory.THRILLER
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.THRILLER);
+                      }}
+                    >
+                      THRILLER
+                    </Button>
+                  </MenuItem>
                 </Menu>
               </Dropdown>
               <Button
@@ -268,70 +349,66 @@ const Products = (props: ProductsProps) => {
           <Stack className="list-category-section">
             <Stack className="products-wrapper">
               {products.length !== 0 ? (
-                products.map((product: Product) => {
-                  const imagePath = `${serverApi}/${product.productImages[0]}`;
+                products.map((ele: Product) => {
+                  const imagePath = `${serverApi}/${ele.productImages[0]}`;
                   return (
-                    <Stack
-                      key={product._id}
+                    <Card
+                      key={ele._id}
                       className="product-card"
-                      onClick={() => chosenProductHandler(product._id)}
+                      onClick={() => chosenProductHandler(ele._id)}
+                      sx={{
+                        minHeight: "340px",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                          transition: "transform 0.6s ease",
+                        },
+                      }}
                     >
-                      <Stack
-                        className="product-img"
-                        sx={{ backgroundImage: `url(${imagePath})` }}
-                      >
-                        <div className="product-sale">
-                          {product.productType}
-                        </div>
+                      <CardCover>
+                        <img src={imagePath} loading="lazy" alt="book_image" />
+                      </CardCover>
+                      <CardCover
+                        sx={{
+                          background:
+                            "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
+                        }}
+                      />
+                      <CardContent sx={{ justifyContent: "flex-end" }}>
+                        <Typography level="title-lg" textColor="#fff">
+                          {ele.productName}
+                        </Typography>
+                        <Typography textColor="neutral.300">
+                          {ele.productCategory}
+                        </Typography>
+                      </CardContent>
+
+                      <CardOverflow>
                         <Button
-                          className="shop-btn"
+                          variant="solid"
+                          color="danger"
+                          size="lg"
                           onClick={(e) => {
                             console.log("clicked");
                             onAdd({
-                              _id: product._id,
+                              _id: ele._id,
                               quantity: 1,
-                              name: product.productName,
-                              price: product.productPrice,
-                              image: product.productImages[0],
+                              name: ele.productName,
+                              price: ele.productPrice,
+                              image: ele.productImages[0],
                             });
                             e.stopPropagation();
                           }}
                         >
-                          <img
-                            src="/icons/shopping-cart.svg"
-                            style={{ display: "flex" }}
-                            alt="Cart"
-                          />
+                          Add to cart
                         </Button>
-                        <Button className="view-btn" sx={{ right: "36px" }}>
-                          <Badge
-                            badgeContent={product.productView}
-                            color="success"
-                          >
-                            <RemoveRedEyeIcon
-                              sx={{
-                                color:
-                                  product.productView === 0 ? "gray" : "white",
-                              }}
-                            />
-                          </Badge>
-                        </Button>
-                      </Stack>
-
-                      <Box className="product-desc">
-                        <span className="product-title">
-                          {product.productName}
-                        </span>
-                        <div className="product-desc">
-                          <MonetizationOnIcon />
-                          {product.productPrice}
-                        </div>
-                      </Box>
-                    </Stack>
+                      </CardOverflow>
+                    </Card>
                   );
                 })
               ) : (
-                <Box className="no-data">No products available yet</Box>
+                <Typography level="h2" color="success">
+                  No products available yet
+                </Typography>
               )}
             </Stack>
           </Stack>
@@ -358,40 +435,6 @@ const Products = (props: ProductsProps) => {
           </Stack>
         </Stack>
       </Container>
-      <div className="brands-logo">
-        <Container className={"brands"}>
-          <Box className={"category-title"}>Our family brands</Box>
-          <Stack className={"brand-list"}>
-            <Box className={"review-box"}>
-              <img src={"/img/gurme.webp"} alt="" />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/sweets.webp"} alt="" />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/seafood.webp"} alt="" />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/doner.webp"} alt="" />
-            </Box>
-          </Stack>
-        </Container>
-      </div>
-      <div className="address">
-        <Container>
-          <Stack className={"address-area"}>
-            <Box className={"title"}>Our address</Box>
-            <iframe
-              title="unique"
-              style={{ marginTop: "60px" }}
-              src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d52439.55492114084!2d127.66387910076521!3d34.76888656098249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d34.7685234!2d127.70557059999999!4m3!3m2!1d34.769263599999995!2d127.7045868!5e0!3m2!1sen!2skr!4v1745401733570!5m2!1sen!2skr"
-              width="1320"
-              height="500"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </Stack>
-        </Container>
-      </div>
     </div>
   );
 };

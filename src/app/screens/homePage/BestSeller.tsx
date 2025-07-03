@@ -9,6 +9,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { serverApi } from "../../../libs/config";
+import { CardOverflow } from "@mui/joy";
 
 const bestSellersRetriever = createSelector(
   retrieveBestSellers,

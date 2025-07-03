@@ -2,25 +2,16 @@
   width: 100%;
   height: auto;
   display: flex;
+  flex-direction: column;
 }
 
 .help-page .help-container {
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-right: 230px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
-
-label {
-  margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
-  color: grey;
-  margin-top: 20px;
+  width: 70%;
 }
 
 .help-page .help-menu {
@@ -52,7 +43,7 @@ label {
 
 .help-page .help-main-content {
   width: 100%;
-  height: 1000px;
+  height: auto;
 }
 
 .help-page .rules-box {
@@ -151,4 +142,18 @@ label {
   line-height: 1.5;
   letter-spacing: 0.00938em;
   color: grey;
+}
+
+.address {
+  margin-bottom: 60px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.address .address-area {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
