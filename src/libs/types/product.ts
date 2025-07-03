@@ -22,7 +22,7 @@ export interface ProductInquiry {
   order: string;
   page: number;
   limit: number;
-  productType: ProductType;
+  productType?: ProductType;
   productCategory?: ProductCategory;
   search?: string;
 }

@@ -40,7 +40,7 @@ p {
   gap: 10px;
 }
 .banner-frame .banner-container .left-side .main-buttons:hover {
-  transform: scale(1.5);
+  transform: scale(1.3);
 }
 .banner-frame .banner-container .book-images {
   display: flex;

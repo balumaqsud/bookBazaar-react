@@ -4,9 +4,28 @@ import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import { Box, Container, Stack } from "@mui/material";
+import { retrieveBestSellers } from "./selector";
+import { createSelector } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { serverApi } from "../../../libs/config";
+
+const bestSellersRetriever = createSelector(
+  retrieveBestSellers,
+  (bestSellers) => ({
+    bestSellers,
+  })
+);
 
 const BestSeller = () => {
-  const array = ["tashkent", "samarqand", "navoiy", "chirchiq"];
+  const { bestSellers } = useSelector(bestSellersRetriever);
+
+  const history = useHistory();
+
+  //chosen product detail page
+  const chosenProductHandler = (id: string) => {
+    history.push(`/products/${id}`);
+  };
 
   return (
     <div className="bestLate-frame">
@@ -18,9 +37,11 @@ const BestSeller = () => {
           spacing={2}
           flexWrap="wrap"
         >
-          {array.map((value, number) => {
+          {bestSellers.map((ele) => {
+            const imagePath = `${serverApi}/${ele.productImages[0]}`;
             return (
               <Card
+                key={ele._id}
                 sx={{
                   minHeight: "340px",
                   width: 226,
@@ -31,7 +52,7 @@ const BestSeller = () => {
                 }}
               >
                 <CardCover>
-                  <img src="/images/book1.jpg" loading="lazy" alt="book" />
+                  <img src={imagePath} loading="lazy" alt="book_image" />
                 </CardCover>
                 <CardCover
                   sx={{
@@ -41,9 +62,11 @@ const BestSeller = () => {
                 />
                 <CardContent sx={{ justifyContent: "flex-end" }}>
                   <Typography level="title-lg" textColor="#fff">
-                    Yosemite National Park
+                    {ele.productName}
                   </Typography>
-                  <Typography textColor="neutral.300">{value}</Typography>
+                  <Typography textColor="neutral.300">
+                    {ele.productCategory}
+                  </Typography>
                 </CardContent>
               </Card>
             );

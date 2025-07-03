@@ -14,8 +14,10 @@ export interface AppRootState {
 }
 
 export interface HomePageState {
-  popularDishes: Product[];
-  newDishes: Product[];
+  bestSellers: Product[];
+  latestBooks: Product[];
+  randomBook: Product[];
+  featuredBook: Product[];
   topUsers: Member[];
 }
 
