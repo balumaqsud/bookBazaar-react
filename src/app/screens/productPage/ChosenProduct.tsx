@@ -4,10 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { setChosenProduct, setAdmin } from "./slice";
 import { Product } from "../../../libs/types/product";
@@ -21,6 +17,11 @@ import { useParams } from "react-router-dom";
 import { Member } from "../../../libs/types/member";
 import { serverApi } from "../../../libs/config";
 import { CardItem } from "../../../libs/types/search";
+import "../../../css/product.css";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 //REDUX SLICE define
 const actionDispatch = (dispatch: Dispatch) => ({

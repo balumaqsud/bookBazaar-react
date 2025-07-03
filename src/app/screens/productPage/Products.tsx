@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -21,7 +21,9 @@ import { createSelector } from "reselect";
 import { ProductCategory } from "../../../libs/data/enums/product.enum";
 import { useHistory } from "react-router-dom";
 import { CardItem } from "../../../libs/types/search";
-import { Category } from "@mui/icons-material";
+import Typography from "@mui/joy/Typography";
+import { Button } from "@mui/joy";
+import "../../../css/product.css";
 
 //REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -92,7 +94,7 @@ const Products = (props: ProductsProps) => {
   };
   //chosen product detail page
   const chosenProductHandler = (id: string) => {
-    history.push(`/products/${id}`);
+    history.push(`/books/${id}`);
   };
 
   return (
@@ -100,12 +102,19 @@ const Products = (props: ProductsProps) => {
       <Container>
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Stack className="avatar-box">
-            <Typography className="title">Burak Restaurant</Typography>
+            <Typography
+              level="h2"
+              color="success"
+              sx={{ maxWidth: 480, lineHeight: 2 }}
+            >
+              Book Bazaar
+            </Typography>
             <div className="search">
               <CssVarsProvider>
                 <Input
                   type="search"
-                  placeholder="Search product"
+                  sx={{ width: "90%" }}
+                  placeholder="Search a book"
                   value={searchText}
                   onChange={(e) => setSearchText(e.target.value)}
                   onKeyDown={(e) => {
@@ -114,8 +123,8 @@ const Products = (props: ProductsProps) => {
                 />
               </CssVarsProvider>
               <Button
-                variant="contained"
-                color={"primary"}
+                variant="soft"
+                color={"success"}
                 onClick={productSearchHandler}
               >
                 <SearchIcon />
@@ -126,9 +135,9 @@ const Products = (props: ProductsProps) => {
           <Stack className="dishes-filter-section">
             <Stack className="dishes-filter-box">
               <Button
-                variant="contained"
+                variant="soft"
                 color={
-                  productSearch.order === "createdAt" ? "primary" : "secondary"
+                  productSearch.order === "createdAt" ? "neutral" : "warning"
                 }
                 className="order"
                 onClick={() => {
@@ -138,11 +147,9 @@ const Products = (props: ProductsProps) => {
                 New
               </Button>
               <Button
-                variant="contained"
+                variant="soft"
                 color={
-                  productSearch.order === "productPrice"
-                    ? "primary"
-                    : "secondary"
+                  productSearch.order === "productPrice" ? "neutral" : "warning"
                 }
                 className="order"
                 onClick={() => {
@@ -152,11 +159,9 @@ const Products = (props: ProductsProps) => {
                 Price
               </Button>
               <Button
-                variant="contained"
+                variant="soft"
                 color={
-                  productSearch.order === "productView"
-                    ? "primary"
-                    : "secondary"
+                  productSearch.order === "productView" ? "neutral" : "warning"
                 }
                 className="order"
                 onClick={() => {
@@ -171,11 +176,11 @@ const Products = (props: ProductsProps) => {
             <Stack className="product-category">
               <div className="category-main">
                 <Button
-                  variant="contained"
+                  variant="soft"
                   color={
                     productSearch.productCategory === ProductCategory.KIDS
-                      ? "primary"
-                      : "secondary"
+                      ? "neutral"
+                      : "warning"
                   }
                   onClick={() => {
                     productSortHandler(ProductCategory.KIDS);
@@ -184,11 +189,11 @@ const Products = (props: ProductsProps) => {
                   KIDS
                 </Button>
                 <Button
-                  variant="contained"
+                  variant="soft"
                   color={
                     productSearch.productCategory === ProductCategory.HORROR
-                      ? "primary"
-                      : "secondary"
+                      ? "neutral"
+                      : "warning"
                   }
                   onClick={() => {
                     productSortHandler(ProductCategory.HORROR);
@@ -197,11 +202,11 @@ const Products = (props: ProductsProps) => {
                   HORROR
                 </Button>
                 <Button
-                  variant="contained"
+                  variant="soft"
                   color={
                     productSearch.productCategory === ProductCategory.FANTASY
-                      ? "primary"
-                      : "secondary"
+                      ? "neutral"
+                      : "warning"
                   }
                   onClick={() => {
                     productSortHandler(ProductCategory.FANTASY);
@@ -210,11 +215,11 @@ const Products = (props: ProductsProps) => {
                   FANTASY
                 </Button>
                 <Button
-                  variant="contained"
+                  variant="soft"
                   color={
                     productSearch.productCategory === ProductCategory.ADVENTURE
-                      ? "primary"
-                      : "secondary"
+                      ? "neutral"
+                      : "warning"
                   }
                   onClick={() => {
                     productSortHandler(ProductCategory.ADVENTURE);
@@ -223,11 +228,11 @@ const Products = (props: ProductsProps) => {
                   ADVENTURE
                 </Button>
                 <Button
-                  variant="contained"
+                  variant="soft"
                   color={
                     productSearch.productCategory === ProductCategory.POETRY
-                      ? "primary"
-                      : "secondary"
+                      ? "neutral"
+                      : "warning"
                   }
                   onClick={() => {
                     productSortHandler(ProductCategory.POETRY);
@@ -277,7 +282,7 @@ const Products = (props: ProductsProps) => {
                         <Button className="view-btn" sx={{ right: "36px" }}>
                           <Badge
                             badgeContent={product.productView}
-                            color="secondary"
+                            color="warning"
                           >
                             <RemoveRedEyeIcon
                               sx={{

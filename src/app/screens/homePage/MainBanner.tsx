@@ -1,5 +1,5 @@
 import { Box, Container, Stack, Paper } from "@mui/material";
-import Button from "@mui/joy/Button";
+import { Button } from "@mui/joy";
 import React from "react";
 import Typography from "@mui/joy/Typography";
 import { useHistory } from "react-router-dom";
@@ -7,8 +7,8 @@ import { useHistory } from "react-router-dom";
 const MainBanner = () => {
   const history = useHistory();
 
-  const chosenHandler = (id: string) => {
-    history.push(`/products/`);
+  const chosenHandler = () => {
+    history.push(`/books`);
   };
   return (
     <div className="banner-frame">
@@ -42,14 +42,14 @@ const MainBanner = () => {
             </Typography>
           </Box>
           <Box className="main-buttons">
-            <Button size="lg" variant={"soft"} color="warning">
+            <Button size="lg" variant="soft" color="warning">
               Random Book
             </Button>
             <Button
               size="lg"
               variant={"outlined"}
               color="success"
-              onClick={() => chosenHandler}
+              onClick={chosenHandler}
             >
               Visit Library
             </Button>
