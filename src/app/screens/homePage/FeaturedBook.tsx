@@ -32,7 +32,7 @@ const FeaturedBook = () => {
           <Container className="bestLate-container">
             <Box className="featured-title">Featured Book</Box>
             <Stack className="product-box">
-              <Box className="product-image">
+              <Box className="product-image" sx={{ width: 280, height: 540 }}>
                 <img src={imagePath} alt="product-image" />
               </Box>
               <Box className="product-detail">

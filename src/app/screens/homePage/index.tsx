@@ -84,7 +84,7 @@ const HomePage = () => {
 
     products
       .getProducts({
-        page: 2,
+        page: 3,
         limit: 1,
         order: "productLeftCount",
       })
