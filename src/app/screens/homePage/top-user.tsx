@@ -6,9 +6,21 @@ import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/joy/Typography";
 import { Container, Stack } from "@mui/material";
+import { createSelector } from "@reduxjs/toolkit";
+import { retrieveTopUsers } from "./selector";
+import { useSelector } from "react-redux";
+import { serverApi } from "../../../libs/config";
+
+const topUsersRetriever = createSelector(retrieveTopUsers, (topUsers) => ({
+  topUsers,
+}));
 
 const TopUsers = () => {
   const array = ["tashkent", "samarqand", "navoiy", "chirchiq"];
+
+  const { topUsers } = useSelector(topUsersRetriever);
+  console.log("top", topUsers);
+
   return (
     <div className="bestLate-frame">
       <Container className="bestLate-container">
@@ -19,7 +31,8 @@ const TopUsers = () => {
           spacing={1}
           flexWrap="wrap"
         >
-          {array.map((value, number) => {
+          {topUsers.map((ele) => {
+            const imagePath = `${serverApi}/${ele.memberImage}`;
             return (
               <Card
                 sx={{
@@ -36,7 +49,7 @@ const TopUsers = () => {
               >
                 <CardContent sx={{ alignItems: "center", textAlign: "center" }}>
                   <Avatar
-                    src="/static/images/avatar/1.jpg"
+                    src={imagePath ? imagePath : "/static/images/avatar/1.jpg"}
                     sx={{ "--Avatar-size": "4rem" }}
                   />
                   <Chip
@@ -50,12 +63,11 @@ const TopUsers = () => {
                       borderColor: "background.surface",
                     }}
                   >
-                    PRO
+                    {ele.memberType}
                   </Chip>
-                  <Typography level="title-lg">{value}</Typography>
+                  <Typography level="title-lg">{ele.memberNick}</Typography>
                   <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
-                    Hello, this is my bio and I am a PRO member of MUI. I am a
-                    developer and I love to code.
+                    {ele.memberDescription}
                   </Typography>
                 </CardContent>
               </Card>
