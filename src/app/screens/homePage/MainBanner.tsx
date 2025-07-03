@@ -2,8 +2,14 @@ import { Box, Container, Stack, Paper } from "@mui/material";
 import Button from "@mui/joy/Button";
 import React from "react";
 import Typography from "@mui/joy/Typography";
+import { useHistory } from "react-router-dom";
 
 const MainBanner = () => {
+  const history = useHistory();
+
+  const chosenHandler = (id: string) => {
+    history.push(`/products/`);
+  };
   return (
     <div className="banner-frame">
       <Container className="banner-container">
@@ -39,7 +45,12 @@ const MainBanner = () => {
             <Button size="lg" variant={"soft"} color="warning">
               Random Book
             </Button>
-            <Button size="lg" variant={"outlined"} color="success">
+            <Button
+              size="lg"
+              variant={"outlined"}
+              color="success"
+              onClick={() => chosenHandler}
+            >
               Visit Library
             </Button>
           </Box>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import OrderPage from "./screens/orderPage";
 import UserPage from "./screens/userPage";
-import ProductPage from "./screens/productPage";
+import ProductsPage from "./screens/productPage";
 import HelpPage from "./screens/helpPage";
 import HomePage from "./screens/homePage";
 import "../css/app.css";
@@ -72,7 +72,7 @@ function App() {
           <UserPage />
         </Route>
         <Route path="/books">
-          <ProductPage />
+          <ProductsPage onAdd={onAdd} />
         </Route>
         <Route path="/help">
           <HelpPage />
