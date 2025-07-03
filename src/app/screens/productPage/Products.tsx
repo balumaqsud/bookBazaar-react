@@ -23,6 +23,10 @@ import { useHistory } from "react-router-dom";
 import { CardItem } from "../../../libs/types/search";
 import Typography from "@mui/joy/Typography";
 import { Button } from "@mui/joy";
+import Dropdown from "@mui/joy/Dropdown";
+import Menu from "@mui/joy/Menu";
+import MenuButton from "@mui/joy/MenuButton";
+import MenuItem from "@mui/joy/MenuItem";
 import "../../../css/product.css";
 
 //REDUX SLICE
@@ -123,7 +127,7 @@ const Products = (props: ProductsProps) => {
                 />
               </CssVarsProvider>
               <Button
-                variant="soft"
+                variant="plain"
                 color={"success"}
                 onClick={productSearchHandler}
               >
@@ -134,10 +138,99 @@ const Products = (props: ProductsProps) => {
           </Stack>
           <Stack className="dishes-filter-section">
             <Stack className="dishes-filter-box">
+              <Dropdown>
+                <MenuButton>Category...</MenuButton>
+                <Menu>
+                  <MenuItem>
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory === ProductCategory.KIDS
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.KIDS);
+                      }}
+                    >
+                      KIDS
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory === ProductCategory.HORROR
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.HORROR);
+                      }}
+                    >
+                      HORROR
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory ===
+                        ProductCategory.FANTASY
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.FANTASY);
+                      }}
+                    >
+                      FANTASY
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory ===
+                        ProductCategory.ADVENTURE
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.ADVENTURE);
+                      }}
+                    >
+                      ADVENTURE
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    {" "}
+                    <Button
+                      variant="plain"
+                      color={
+                        productSearch.productCategory === ProductCategory.POETRY
+                          ? "neutral"
+                          : "success"
+                      }
+                      onClick={() => {
+                        productSortHandler(ProductCategory.POETRY);
+                      }}
+                    >
+                      POETRY
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>My account</MenuItem>
+                  <MenuItem>My account</MenuItem>
+                  <MenuItem>My account</MenuItem>
+                  <MenuItem>My account</MenuItem>
+                  <MenuItem>Logout</MenuItem>
+                </Menu>
+              </Dropdown>
               <Button
-                variant="soft"
+                variant="plain"
                 color={
-                  productSearch.order === "createdAt" ? "neutral" : "warning"
+                  productSearch.order === "createdAt" ? "neutral" : "success"
                 }
                 className="order"
                 onClick={() => {
@@ -147,9 +240,9 @@ const Products = (props: ProductsProps) => {
                 New
               </Button>
               <Button
-                variant="soft"
+                variant="plain"
                 color={
-                  productSearch.order === "productPrice" ? "neutral" : "warning"
+                  productSearch.order === "productPrice" ? "neutral" : "success"
                 }
                 className="order"
                 onClick={() => {
@@ -159,9 +252,9 @@ const Products = (props: ProductsProps) => {
                 Price
               </Button>
               <Button
-                variant="soft"
+                variant="plain"
                 color={
-                  productSearch.order === "productView" ? "neutral" : "warning"
+                  productSearch.order === "productView" ? "neutral" : "success"
                 }
                 className="order"
                 onClick={() => {
@@ -173,75 +266,6 @@ const Products = (props: ProductsProps) => {
             </Stack>
           </Stack>
           <Stack className="list-category-section">
-            <Stack className="product-category">
-              <div className="category-main">
-                <Button
-                  variant="soft"
-                  color={
-                    productSearch.productCategory === ProductCategory.KIDS
-                      ? "neutral"
-                      : "warning"
-                  }
-                  onClick={() => {
-                    productSortHandler(ProductCategory.KIDS);
-                  }}
-                >
-                  KIDS
-                </Button>
-                <Button
-                  variant="soft"
-                  color={
-                    productSearch.productCategory === ProductCategory.HORROR
-                      ? "neutral"
-                      : "warning"
-                  }
-                  onClick={() => {
-                    productSortHandler(ProductCategory.HORROR);
-                  }}
-                >
-                  HORROR
-                </Button>
-                <Button
-                  variant="soft"
-                  color={
-                    productSearch.productCategory === ProductCategory.FANTASY
-                      ? "neutral"
-                      : "warning"
-                  }
-                  onClick={() => {
-                    productSortHandler(ProductCategory.FANTASY);
-                  }}
-                >
-                  FANTASY
-                </Button>
-                <Button
-                  variant="soft"
-                  color={
-                    productSearch.productCategory === ProductCategory.ADVENTURE
-                      ? "neutral"
-                      : "warning"
-                  }
-                  onClick={() => {
-                    productSortHandler(ProductCategory.ADVENTURE);
-                  }}
-                >
-                  ADVENTURE
-                </Button>
-                <Button
-                  variant="soft"
-                  color={
-                    productSearch.productCategory === ProductCategory.POETRY
-                      ? "neutral"
-                      : "warning"
-                  }
-                  onClick={() => {
-                    productSortHandler(ProductCategory.POETRY);
-                  }}
-                >
-                  POETRY
-                </Button>
-              </div>
-            </Stack>
             <Stack className="products-wrapper">
               {products.length !== 0 ? (
                 products.map((product: Product) => {
@@ -282,7 +306,7 @@ const Products = (props: ProductsProps) => {
                         <Button className="view-btn" sx={{ right: "36px" }}>
                           <Badge
                             badgeContent={product.productView}
-                            color="warning"
+                            color="success"
                           >
                             <RemoveRedEyeIcon
                               sx={{

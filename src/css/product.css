@@ -28,7 +28,7 @@
   margin-left: 10px;
   border-radius: 40px;
 }
-/* for now*/
+/* for*/
 
 .products .dishes-filter-section {
   width: 100%;
@@ -52,21 +52,14 @@
 }
 
 .products-page .products .product-category {
-  margin-top: 60px;
   width: 50px;
   height: auto;
   display: flex;
-  flex-direction: column;
 }
 
 .products .list-category-section .product-category .category-main {
-  position: relative;
-  transform: rotate(-90deg);
   display: flex;
-  flex-direction: row;
-  justify-content: end;
   gap: 10px;
-  margin-top: 40px;
 }
 .products-page .product-category .category-main button {
   min-width: auto;
