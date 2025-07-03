@@ -55,7 +55,7 @@ const TopUsers = () => {
                   <Chip
                     size="sm"
                     variant="soft"
-                    color="primary"
+                    color="success"
                     sx={{
                       mt: -1,
                       mb: 1,

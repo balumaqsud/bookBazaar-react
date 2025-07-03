@@ -117,7 +117,7 @@ const HomePage = (props: HomeProps) => {
       <BestSeller />
       <Advertisement />
       <FeaturedBook onAdd={onAdd} />
-      <LatestBooks />
+      <LatestBooks onAdd={onAdd} />
       <Statistics />
       <TopUsers />
     </div>

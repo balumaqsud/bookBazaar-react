@@ -14,6 +14,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { serverApi } from "../../../libs/config";
+import { CardItem } from "../../../libs/types/search";
 
 const latestBooksRetriever = createSelector(
   retrieveLatestBooks,
@@ -22,7 +23,11 @@ const latestBooksRetriever = createSelector(
   })
 );
 
-const LatestBooks = () => {
+interface HomeProps {
+  onAdd: (item: CardItem) => void;
+}
+const LatestBooks = (props: HomeProps) => {
+  const { onAdd } = props;
   const { latestBooks } = useSelector(latestBooksRetriever);
   const history = useHistory();
   const array = ["tashkent", "samarqand", "navoiy", "chirchiq"];
@@ -99,7 +104,17 @@ const LatestBooks = () => {
                     variant="solid"
                     color="danger"
                     size="lg"
-                    onClick={() => chosenProductHandler(ele._id)}
+                    onClick={(e) => {
+                      console.log("clicked");
+                      onAdd({
+                        _id: ele._id,
+                        quantity: 1,
+                        name: ele.productName,
+                        price: ele.productPrice,
+                        image: ele.productImages[0],
+                      });
+                      e.stopPropagation();
+                    }}
                   >
                     Add to cart
                   </Button>
