@@ -86,7 +86,23 @@ export default function ChosenProduct(props: ChosenProductProps) {
       <Container className="chosen-container">
         <Stack className="product-box">
           <Box className="product-image" sx={{ height: 560 }}>
-            <img src={imagePath} alt="product-image" />
+            <Stack className={"chosen-product-slider"}>
+              <Swiper
+                loop={true}
+                spaceBetween={10}
+                navigation={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="swiper-area"
+              >
+                {ele?.productImages.map((ele: string, index: number) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <img src={`${serverApi}/${ele}`} alt="" />
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </Stack>
           </Box>
           <Box className="product-detail">
             <p>{ele.productCategory}</p>
