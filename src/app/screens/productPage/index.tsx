@@ -1,8 +1,8 @@
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import ChosenProduct from "./ChosenProduct";
 import Products from "./Products";
-import { CardItem } from "../../../libs/types/search";
 import "../../../css/product.css";
+import { CardItem } from "../../../libs/types/search";
 
 interface ProductsPageProps {
   onAdd: (item: CardItem) => void;
@@ -10,14 +10,14 @@ interface ProductsPageProps {
 
 const ProductsPage = (props: ProductsPageProps) => {
   const { onAdd } = props;
-  const books = useRouteMatch();
+  const products = useRouteMatch();
   return (
     <div className="products-page">
       <Switch>
-        <Route path={`${books.path}/:productId`}>
+        <Route path={`${products.path}/:productId`}>
           <ChosenProduct onAdd={onAdd} />
         </Route>
-        <Route path={`${books.path}`}>
+        <Route path={`${products.path}`}>
           <Products onAdd={onAdd} />
         </Route>
       </Switch>

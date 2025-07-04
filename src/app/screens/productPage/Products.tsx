@@ -1,23 +1,18 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { Box, Container, Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Badge from "@mui/material/Badge";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Input from "@mui/joy/Input";
 import {
-  AspectRatio,
   Card,
   CardContent,
   CardCover,
   CardOverflow,
   Chip,
   CssVarsProvider,
-  Link,
 } from "@mui/joy";
 import { setProducts } from "./slice";
 import { Dispatch } from "@reduxjs/toolkit";
@@ -115,8 +110,8 @@ const Products = (props: ProductsProps) => {
     setProductSearch({ ...productSearch });
   };
   //chosen product detail page
-  const chosenProductHandler = (id: string) => {
-    history.push(`/books/${id}`);
+  const chosenProductHandler = (productId: string) => {
+    history.push(`/books/${productId}`);
   };
 
   return (

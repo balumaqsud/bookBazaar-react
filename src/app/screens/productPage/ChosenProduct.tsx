@@ -4,6 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { setChosenProduct, setAdmin } from "./slice";
 import { Product } from "../../../libs/types/product";
@@ -17,19 +21,14 @@ import { useParams } from "react-router-dom";
 import { Member } from "../../../libs/types/member";
 import { serverApi } from "../../../libs/config";
 import { CardItem } from "../../../libs/types/search";
-import "../../../css/product.css";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 
 //REDUX SLICE define
 const actionDispatch = (dispatch: Dispatch) => ({
-  setAdmin: (data: Member) => dispatch(setAdmin(data)),
+  setRestaurant: (data: Member) => dispatch(setAdmin(data)),
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
 });
 //selector define
-const adminRetriever = createSelector(retrieveAdmin, (admin) => ({
+const restaurantRetriever = createSelector(retrieveAdmin, (admin) => ({
   admin,
 }));
 const chosenProductRetriever = createSelector(
@@ -48,7 +47,8 @@ export default function ChosenProduct(props: ChosenProductProps) {
   const { productId } = useParams<{ productId: string }>();
   console.log("here", productId);
   //slice call, sets the redux data
-  const { setAdmin, setChosenProduct } = actionDispatch(useDispatch);
+  const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
+
   // setting data for redux
   useEffect(() => {
     const product = new ProductService();
@@ -63,15 +63,14 @@ export default function ChosenProduct(props: ChosenProductProps) {
     member
       .getAdmin()
       .then((data) => {
-        setAdmin(data);
+        setRestaurant(data);
       })
       .catch((err) => console.log(err));
   }, []);
 
   //selector call, gets the redux data
-  const { admin } = useSelector(adminRetriever);
+  const { admin } = useSelector(restaurantRetriever);
   const { chosenProduct } = useSelector(chosenProductRetriever);
-  console.log(admin);
 
   if (!chosenProduct) return null;
 
@@ -118,6 +117,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
               </div>
             </Box>
             <p className={"product-desc"}>{chosenProduct?.productDesc}</p>
+
             <div className={"product-price"}>
               <span>Price:</span>
               <span>${chosenProduct?.productPrice}</span>

@@ -66,6 +66,9 @@ const TopUsers = () => {
                     {ele.memberType}
                   </Chip>
                   <Typography level="title-lg">{ele.memberNick}</Typography>
+                  <Typography level="body-sm">
+                    {ele.memberPoints} points
+                  </Typography>
                   <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
                     {ele.memberDescription}
                   </Typography>
