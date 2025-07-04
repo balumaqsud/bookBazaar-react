@@ -105,16 +105,32 @@ export default function ChosenProduct(props: ChosenProductProps) {
             </Stack>
           </Box>
           <Box className="product-detail">
-            <p>{ele.productCategory}</p>
+            <Typography color="neutral" level="body-lg">
+              {ele.productCategory}
+            </Typography>
             <Chip component="span" size="md" variant="soft" color="success">
               {ele.productType}
+            </Chip>
+            <Chip
+              component="span"
+              size="md"
+              variant="soft"
+              color="success"
+              sx={{ ml: 1 }}
+            >
+              {ele.productView} views
             </Chip>
             <Typography level="h2" fontWeight={600}>
               {ele.productName}
             </Typography>
 
             <Typography level="body-md">{ele.productDesc}</Typography>
-            <Typography variant="soft" level="body-md" color="success">
+            <Typography
+              variant="soft"
+              level="body-md"
+              color="success"
+              sx={{ mt: 1 }}
+            >
               Store: {admin?.memberNick}. Email: {admin?.memberEmail}
             </Typography>
             <Box className="product-low">
