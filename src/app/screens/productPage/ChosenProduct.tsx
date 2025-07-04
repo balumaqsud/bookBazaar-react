@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Container, Stack, Box } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -21,6 +20,8 @@ import { useParams } from "react-router-dom";
 import { Member } from "../../../libs/types/member";
 import { serverApi } from "../../../libs/config";
 import { CardItem } from "../../../libs/types/search";
+import { Chip, Typography } from "@mui/joy";
+import Button from "@mui/joy/Button";
 
 //REDUX SLICE define
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -31,12 +32,9 @@ const actionDispatch = (dispatch: Dispatch) => ({
 const restaurantRetriever = createSelector(retrieveAdmin, (admin) => ({
   admin,
 }));
-const chosenProductRetriever = createSelector(
-  retrieveChosenProduct,
-  (chosenProduct) => ({
-    chosenProduct,
-  })
-);
+const chosenProductRetriever = createSelector(retrieveChosenProduct, (ele) => ({
+  ele,
+}));
 
 interface ChosenProductProps {
   onAdd: (item: CardItem) => void;
@@ -48,6 +46,8 @@ export default function ChosenProduct(props: ChosenProductProps) {
   console.log("here", productId);
   //slice call, sets the redux data
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
+
+  //chosen product detail page
 
   // setting data for redux
   useEffect(() => {
@@ -70,75 +70,55 @@ export default function ChosenProduct(props: ChosenProductProps) {
 
   //selector call, gets the redux data
   const { admin } = useSelector(restaurantRetriever);
-  const { chosenProduct } = useSelector(chosenProductRetriever);
+  const { ele } = useSelector(chosenProductRetriever);
 
-  if (!chosenProduct) return null;
-
+  if (!ele) return null;
+  const imagePath = `${serverApi}/${ele.productImages[0]}`;
   return (
-    <div className={"chosen-product"}>
-      <Box className={"title"}>Product Detail</Box>
-      <Container className={"product-container"}>
-        <Stack className={"chosen-product-slider"}>
-          <Swiper
-            loop={true}
-            spaceBetween={10}
-            navigation={true}
-            modules={[FreeMode, Navigation, Thumbs]}
-            className="swiper-area"
-          >
-            {chosenProduct?.productImages.map((ele: string, index: number) => {
-              return (
-                <SwiperSlide key={index}>
-                  <img
-                    className="slider-image"
-                    src={`${serverApi}/${ele}`}
-                    alt=""
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </Stack>
-        <Stack className={"chosen-product-info"}>
-          <Box className={"info-box"}>
-            <strong className={"product-name"}>
-              {chosenProduct?.productName}
-            </strong>
-            <span className={"restaurant-name"}>
-              {admin?.memberNick}: {admin?.memberEmail}
-            </span>
-            <Box className={"rating-box"}>
-              <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
-              <div className={"evaluation-box"}>
-                <div className={"product-view"}>
-                  <RemoveRedEyeIcon sx={{ mr: "10px" }} />
-                  <span>{chosenProduct?.productView}</span>
-                </div>
-              </div>
-            </Box>
-            <p className={"product-desc"}>{chosenProduct?.productDesc}</p>
+    <div className="chosen-frame">
+      <Typography
+        level="h2"
+        color="success"
+        sx={{ maxWidth: 480, lineHeight: 2 }}
+      >
+        Product Detail
+      </Typography>
+      <Container className="chosen-container">
+        <Stack className="product-box">
+          <Box className="product-image" sx={{ height: 560 }}>
+            <img src={imagePath} alt="product-image" />
+          </Box>
+          <Box className="product-detail">
+            <p>{ele.productCategory}</p>
+            <Chip component="span" size="md" variant="soft" color="success">
+              {ele.productType}
+            </Chip>
+            <Typography level="h2" fontWeight={600}>
+              {ele.productName}
+            </Typography>
 
-            <div className={"product-price"}>
-              <span>Price:</span>
-              <span>${chosenProduct?.productPrice}</span>
-            </div>
-            <div className={"button-box"}>
+            <Typography level="body-sm">{ele.productDesc}</Typography>
+            <Box className="product-low">
+              <p>${ele.productPrice}</p>
               <Button
-                variant="contained"
+                size="lg"
+                variant={"soft"}
+                color="warning"
                 onClick={(e) => {
+                  console.log("clicked");
                   onAdd({
-                    _id: chosenProduct._id,
+                    _id: ele._id,
                     quantity: 1,
-                    name: chosenProduct.productName,
-                    price: chosenProduct.productPrice,
-                    image: chosenProduct.productImages[0],
+                    name: ele.productName,
+                    price: ele.productPrice,
+                    image: ele.productImages[0],
                   });
                   e.stopPropagation();
                 }}
               >
-                Add To Basket
+                Add to Card
               </Button>
-            </div>
+            </Box>
           </Box>
         </Stack>
       </Container>
