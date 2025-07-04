@@ -113,7 +113,10 @@ export default function ChosenProduct(props: ChosenProductProps) {
               {ele.productName}
             </Typography>
 
-            <Typography level="body-sm">{ele.productDesc}</Typography>
+            <Typography level="body-md">{ele.productDesc}</Typography>
+            <Typography variant="soft" level="body-md" color="success">
+              Store: {admin?.memberNick}. Email: {admin?.memberEmail}
+            </Typography>
             <Box className="product-low">
               <p>${ele.productPrice}</p>
               <Button
