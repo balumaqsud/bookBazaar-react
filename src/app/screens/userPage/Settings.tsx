@@ -1,6 +1,5 @@
-import { Box } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
-import Button from "@mui/material/Button";
 import { useGlobals } from "../../hooks/useGlobals";
 import { useState } from "react";
 import { MemberUpdateInput } from "../../../libs/types/member";
@@ -11,6 +10,7 @@ import {
 } from "../../../libs/sweetAlerts";
 import { Messages, serverApi } from "../../../libs/config";
 import MemberService from "../../services/MemberService";
+import { Button, FormLabel, Input, Textarea } from "@mui/joy";
 
 export function Settings() {
   const { authMember, setAuthMember } = useGlobals();
@@ -86,84 +86,71 @@ export function Settings() {
     }
   };
   return (
-    <Box className={"settings"}>
-      <Box className={"member-media-frame"}>
-        <img src={file} className={"mb-image"} alt="" />
+    <Stack className={"settings"}>
+      <Box className={"image-box"}>
+        <img src={file} className={"memberImage"} alt="" />
         <div className={"media-change-box"}>
-          <span>Upload image</span>
-          <p>JPG, JPEG, PNG formats only!</p>
           <div className={"up-del-box"}>
-            <Button component="label" onChange={imageHandler}>
-              <CloudDownloadIcon />
+            <Button variant="outlined" color="success" onChange={imageHandler}>
+              Edit Image
               <input type="file" hidden />
             </Button>
           </div>
         </div>
       </Box>
-      <Box className={"input-frame"}>
-        <div className={"long-input"}>
-          <label className={"spec-label"}>Username</label>
-          <input
-            className={"spec-input mb-nick"}
-            type="text"
-            placeholder={authMember?.memberNick}
-            value={memberUpdateInput.memberNick}
-            name="memberNick"
-            onChange={memberNickHandler}
-          />
-        </div>
-      </Box>
-      <Box className={"input-frame"}>
-        <div className={"short-input"}>
-          <label className={"spec-label"}>Phone</label>
-          <input
-            className={"spec-input mb-phone"}
-            type="text"
-            placeholder={
-              authMember?.memberEmail ? authMember?.memberEmail : "no phone"
-            }
-            value={memberUpdateInput.memberEmail}
-            name="memberEmail"
-            onChange={memberEmailHandler}
-          />
-        </div>
-        <div className={"short-input"}>
-          <label className={"spec-label"}>Address</label>
-          <input
-            className={"spec-input  mb-address"}
-            type="text"
-            placeholder={
-              authMember?.memberAddress
-                ? authMember.memberAddress
-                : "no address"
-            }
-            value={memberUpdateInput.memberAddress}
-            name="memberAddress"
-            onChange={memberAddressHandler}
-          />
-        </div>
-      </Box>
-      <Box className={"input-frame"}>
-        <div className={"long-input"}>
-          <label className={"spec-label"}>Description</label>
-          <textarea
-            className={"spec-textarea mb-description"}
-            placeholder={
-              authMember?.memberDescription
-                ? authMember.memberDescription
-                : "no description"
-            }
-            value={memberUpdateInput.memberDescription}
-            name="memberDesc"
-            onChange={memberDescHandler}
-          />
-        </div>
-      </Box>
-      <Box className={"save-box"}>
-        <Button variant={"contained"} onClick={submitButton}>
+      <Box className={"input"}>
+        <Input
+          color="neutral"
+          size="md"
+          variant="outlined"
+          type="text"
+          placeholder={authMember?.memberNick}
+          value={memberUpdateInput.memberNick}
+          name="memberNick"
+          onChange={memberNickHandler}
+        />
+        <Input
+          color="neutral"
+          size="md"
+          variant="outlined"
+          type="text"
+          placeholder={
+            authMember?.memberEmail ? authMember?.memberEmail : "no phone"
+          }
+          value={memberUpdateInput.memberEmail}
+          name="memberEmail"
+          onChange={memberEmailHandler}
+        />
+        <Input
+          color="neutral"
+          size="md"
+          variant="outlined"
+          className={"spec-input  mb-address"}
+          type="text"
+          placeholder={
+            authMember?.memberAddress ? authMember.memberAddress : "no address"
+          }
+          value={memberUpdateInput.memberAddress}
+          name="memberAddress"
+          onChange={memberAddressHandler}
+        />
+        <FormLabel>Description</FormLabel>
+        <Textarea
+          minRows={5}
+          className={"spec-textarea mb-description"}
+          placeholder={
+            authMember?.memberDescription
+              ? authMember.memberDescription
+              : "no description"
+          }
+          value={memberUpdateInput.memberDescription}
+          name="memberDesc"
+          onChange={memberDescHandler}
+        />
+        <Button variant="soft" color="success" onClick={submitButton}>
           Save
         </Button>
       </Box>
-    </Box>
+    </Stack>
   );
 }
