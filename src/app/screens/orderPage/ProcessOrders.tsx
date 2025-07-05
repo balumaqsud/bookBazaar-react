@@ -1,11 +1,11 @@
 import TabPanel from "@mui/lab/TabPanel";
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React from "react";
 
 //for redux
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePausedOrders } from "./selector";
+import { retrieveProcessOrders } from "./selector";
 import { Product } from "../../../libs/types/product";
 import { Messages, serverApi } from "../../../libs/config";
 import { Order, OrderItem, OrderUpdateInput } from "../../../libs/types/order";
@@ -14,11 +14,12 @@ import { T } from "../../../libs/types/common";
 import { OrderStatus } from "../../../libs/data/enums/order.enum";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
+import { Button, Typography } from "@mui/joy";
 
-const pausedOrdersRetriever = createSelector(
-  retrievePausedOrders,
-  (pausedOrders) => ({
-    pausedOrders,
+const processOrdersRetriever = createSelector(
+  retrieveProcessOrders,
+  (processOrders) => ({
+    processOrders,
   })
 );
 
@@ -28,9 +29,8 @@ interface PausedProps {
 
 const PausedOrders = (props: PausedProps) => {
   const { setValue } = props;
-  const { pausedOrders } = useSelector(pausedOrdersRetriever);
+  const { processOrders } = useSelector(processOrdersRetriever);
   const { authMember, setOrderBuilder } = useGlobals();
-  console.log("this", pausedOrders);
 
   //hanlders
   const deleteHandler = async (e: T) => {
@@ -62,7 +62,7 @@ const PausedOrders = (props: PausedProps) => {
       const orderId = e.target.value;
       const input: OrderUpdateInput = {
         orderId: orderId,
-        orderStatus: OrderStatus.PROCESS,
+        orderStatus: OrderStatus.FINISH,
       };
 
       const confirm = window.confirm("wanna proceed");
@@ -83,7 +83,7 @@ const PausedOrders = (props: PausedProps) => {
   return (
     <TabPanel value="1">
       <Stack>
-        {pausedOrders?.map((order: Order) => {
+        {processOrders?.map((order: Order) => {
           return (
             <Box key={order._id} className="order-main-box">
               <Box className="order-box-scroll">
@@ -102,59 +102,68 @@ const PausedOrders = (props: PausedProps) => {
                         className="order-dish-img"
                         alt="dish"
                       />
-                      <div className="dish-title">{product.productName}</div>
-
-                      <Box className="price-box">
-                        <p>${item.itemPrice}</p>
-                        <img src="/icons/close.svg" alt="close" />
-                        <p>{item.itemQuantity}</p>
-                        <img src="/icons/pause.svg" alt="pause" />
-                        <p style={{ marginLeft: "15px" }}>
-                          ${item.itemQuantity * item.itemPrice}
-                        </p>
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <Typography level="body-lg" color="success">
+                          {product.productName}
+                        </Typography>
+                        <Box sx={{ display: "flex", flexDirection: "row" }}>
+                          <Typography level="body-sm" color="neutral">
+                            ${item.itemPrice}
+                          </Typography>
+                          <Typography
+                            level="body-sm"
+                            color="neutral"
+                            sx={{ ml: 1 }}
+                          >
+                            {item.itemQuantity}x
+                          </Typography>
+                        </Box>
                       </Box>
                     </Box>
                   );
                 })}
               </Box>
               <Box className="total-price">
-                <p>Product Price</p>
-                <p>${order.orderTotal - order.orderDelivery}</p>
-                <img src="/icons/plus.svg" alt="plus" />
-                <p>Delivery Cost</p>
-                <p>${order.orderDelivery}</p>
-                <img src="/icons/pause.svg" alt="pause" />
-                <p>Total</p>
-                <p>${order.orderTotal}</p>
-                <Box className="buttons">
-                  <Button
-                    value={order._id}
-                    className="cancel-button"
-                    onClick={deleteHandler}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    value={order._id}
-                    className="payment-button"
-                    onClick={processHandler}
-                  >
-                    Payment
-                  </Button>
-                </Box>
+                <Typography level="body-md" color="neutral">
+                  Book Price: ${order.orderTotal - order.orderDelivery}
+                </Typography>
+
+                <Typography level="body-md" color="neutral">
+                  Delivery cost: ${order.orderDelivery}
+                </Typography>
+
+                <Typography level="body-md" color="neutral">
+                  Total: ${order.orderTotal}
+                </Typography>
+                <Button
+                  value={order._id}
+                  variant="outlined"
+                  color="warning"
+                  onClick={deleteHandler}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  value={order._id}
+                  variant="outlined"
+                  color="success"
+                  onClick={processHandler}
+                >
+                  Payment
+                </Button>
               </Box>
             </Box>
           );
         })}
-        {!pausedOrders ||
-          (pausedOrders.length === 0 && (
+        {!processOrders ||
+          (processOrders.length === 0 && (
             <Box
               display={"flex"}
               flexDirection={"row"}
               justifyContent={"center"}
             >
               <img
-                src={"/icons/noimage-list.svg"}
+                src={"/images/book1.jpg"}
                 style={{ width: 300, height: 300 }}
                 alt=""
               />

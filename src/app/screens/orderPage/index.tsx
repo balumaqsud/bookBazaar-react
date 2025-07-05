@@ -61,7 +61,7 @@ const OrderPage = () => {
   const handleCopy = () => {
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500); // Reset after 1.5 sec
+      setTimeout(() => setCopied(false), 1500);
       sweetTopSmallSuccessAlert("Email Copied", 700);
     });
   };

@@ -8,6 +8,7 @@ import { retrieveFinishedOrders } from "./selector";
 import { Product } from "../../../libs/types/product";
 import { serverApi } from "../../../libs/config";
 import { Order, OrderItem } from "../../../libs/types/order";
+import { Typography } from "@mui/joy";
 
 const finishedOrdersRetriever = createSelector(
   retrieveFinishedOrders,
@@ -29,37 +30,48 @@ const FinishedOrders = () => {
                   const product: Product = order.productData.filter(
                     (ele: Product) => item.productId === ele._id
                   )[0];
+
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
                   return (
                     <Box key={item._id} className="orders-name-price">
                       <img
                         src={imagePath}
+                        height={"40px"}
+                        width={"30px"}
                         className="order-dish-img"
                         alt="dish"
                       />
-                      <div className="dish-title">{product.productName}</div>
-                      <Box className="price-box">
-                        <p>${item.itemPrice}</p>
-                        <img src="/icons/close.svg" alt="close" />
-                        <p>{item.itemQuantity}</p>
-                        <img src="/icons/pause.svg" alt="pause" />
-                        <p style={{ marginLeft: "15px" }}>
-                          $ ${item.itemQuantity * item.itemPrice}
-                        </p>
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <Typography level="body-lg" color="success">
+                          {product.productName}
+                        </Typography>
+                        <Box sx={{ display: "flex", flexDirection: "row" }}>
+                          <Typography level="body-sm" color="neutral">
+                            ${item.itemPrice}
+                          </Typography>
+                          <Typography
+                            level="body-sm"
+                            color="neutral"
+                            sx={{ ml: 1 }}
+                          >
+                            {item.itemQuantity}x
+                          </Typography>
+                        </Box>
                       </Box>
                     </Box>
                   );
                 })}
               </Box>
               <Box className="total-price">
-                <p>Product Price</p>
-                <p>${order.orderTotal - order.orderDelivery}</p>
-                <img src="/icons/plus.svg" alt="plus" />
-                <p>Delivery Cost</p>
-                <p>${order.orderDelivery}</p>
-                <img src="/icons/pause.svg" alt="pause" />
-                <p>Total</p>
-                <p>${order.orderTotal}</p>
+                <Typography level="body-md" color="neutral">
+                  Book Price: ${order.orderTotal - order.orderDelivery}
+                </Typography>
+                <Typography level="body-md" color="neutral">
+                  Delivery cost: ${order.orderDelivery}
+                </Typography>
+                <Typography level="body-md" color="neutral">
+                  Total: ${order.orderTotal}
+                </Typography>
               </Box>
             </Box>
           );
@@ -72,7 +84,7 @@ const FinishedOrders = () => {
               justifyContent={"center"}
             >
               <img
-                src={"/icons/noimage-list.svg"}
+                src={"/images/book1.jpg"}
                 style={{ width: 300, height: 300 }}
                 alt=""
               />

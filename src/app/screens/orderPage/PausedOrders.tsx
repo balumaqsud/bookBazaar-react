@@ -1,5 +1,5 @@
 import TabPanel from "@mui/lab/TabPanel";
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React from "react";
 
 //for redux
@@ -14,6 +14,7 @@ import { T } from "../../../libs/types/common";
 import { OrderStatus } from "../../../libs/data/enums/order.enum";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
+import { Button, Typography } from "@mui/joy";
 
 const pausedOrdersRetriever = createSelector(
   retrievePausedOrders,
@@ -102,46 +103,63 @@ const PausedOrders = (props: PausedProps) => {
                         className="order-dish-img"
                         alt="dish"
                       />
-                      <div className="dish-title">{product.productName}</div>
-
-                      <Box className="price-box">
-                        <p>${item.itemPrice}</p>
-                        <img src="/icons/close.svg" alt="close" />
-                        <p>{item.itemQuantity}</p>
-                        <img src="/icons/pause.svg" alt="pause" />
-                        <p style={{ marginLeft: "15px" }}>
-                          ${item.itemQuantity * item.itemPrice}
-                        </p>
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <Typography level="body-lg" color="success">
+                          {product.productName}
+                        </Typography>
+                        <Box sx={{ display: "flex", flexDirection: "row" }}>
+                          <Typography level="body-sm" color="neutral">
+                            ${item.itemPrice}
+                          </Typography>
+                          <Typography
+                            level="body-sm"
+                            color="neutral"
+                            sx={{ ml: 1 }}
+                          >
+                            {item.itemQuantity}x
+                          </Typography>
+                        </Box>
                       </Box>
                     </Box>
                   );
                 })}
               </Box>
               <Box className="total-price">
-                <p>Product Price</p>
-                <p>${order.orderTotal - order.orderDelivery}</p>
-                <img src="/icons/plus.svg" alt="plus" />
-                <p>Delivery Cost</p>
-                <p>${order.orderDelivery}</p>
-                <img src="/icons/pause.svg" alt="pause" />
-                <p>Total</p>
-                <p>${order.orderTotal}</p>
-                <Box className="buttons">
-                  <Button
-                    value={order._id}
-                    className="cancel-button"
-                    onClick={deleteHandler}
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    value={order._id}
-                    className="payment-button"
-                    onClick={processHandler}
-                  >
-                    Payment
-                  </Button>
-                </Box>
+                <Typography level="body-md" color="neutral">
+                  Book Price:
+                </Typography>
+                <Typography level="body-md" color="neutral" sx={{ mr: 3 }}>
+                  ${order.orderTotal - order.orderDelivery}
+                </Typography>
+                <Typography level="body-md" color="neutral">
+                  Delivery cost:
+                </Typography>
+                <Typography level="body-md" color="neutral" sx={{ mr: 3 }}>
+                  ${order.orderDelivery}
+                </Typography>
+                <Typography level="body-md" color="neutral">
+                  Total:
+                </Typography>
+                <Typography level="body-md" color="neutral" sx={{ mr: 3 }}>
+                  ${order.orderTotal}
+                </Typography>
+
+                <Button
+                  value={order._id}
+                  variant="outlined"
+                  color="warning"
+                  onClick={deleteHandler}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  value={order._id}
+                  variant="outlined"
+                  color="success"
+                  onClick={processHandler}
+                >
+                  Payment
+                </Button>
               </Box>
             </Box>
           );
