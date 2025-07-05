@@ -10,7 +10,7 @@ import {
 } from "../../../libs/sweetAlerts";
 import { Messages, serverApi } from "../../../libs/config";
 import MemberService from "../../services/MemberService";
-import { Button, FormLabel, Input, Textarea } from "@mui/joy";
+import { Button, FormLabel, Input, Textarea, Typography } from "@mui/joy";
 
 export function Settings() {
   const { authMember, setAuthMember } = useGlobals();
@@ -87,15 +87,20 @@ export function Settings() {
   };
   return (
     <Stack className={"settings"}>
-      <Box className={"image-box"}>
+      <Box className={"member-media-frame"}>
         <img src={file} className={"memberImage"} alt="" />
-        <div className={"media-change-box"}>
-          <div className={"up-del-box"}>
-            <Button variant="outlined" color="success" onChange={imageHandler}>
-              Edit Image
-              <input type="file" hidden />
-            </Button>
-          </div>
+
+        <Typography level="body-sm">JPG, JPEG, PNG formats only!</Typography>
+        <div className={"up-del-box"}>
+          <Button
+            component="label"
+            variant="soft"
+            color="success"
+            onChange={imageHandler}
+          >
+            Edit Image
+            <input type="file" hidden />
+          </Button>
         </div>
       </Box>
       <Box className={"input"}>
