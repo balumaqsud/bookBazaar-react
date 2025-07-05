@@ -91,7 +91,6 @@ export default function Basket(props: BasketProps) {
               ml: -0.5,
               mr: 1,
               paddingTop: 0,
-
               backgroundColor: "black",
             },
             "&:before": {
@@ -118,13 +117,13 @@ export default function Basket(props: BasketProps) {
               <div>Cart is empty!</div>
             ) : (
               <Stack className="basket_all">
-                <div>Card products</div>
+                <div>Card books</div>
                 <Button
                   variant="soft"
                   color="warning"
                   onClick={() => onDeleteAll()}
                 >
-                  Clear All
+                  Clear all
                 </Button>
               </Stack>
             )}
