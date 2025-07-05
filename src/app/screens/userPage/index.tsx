@@ -18,10 +18,22 @@ import { serverApi } from "../../../libs/config";
 import { MemberType } from "../../../libs/data/enums/member.enum";
 import { Typography } from "@mui/joy";
 import "../../../css/userPage.css";
+import { useState } from "react";
+import { sweetTopSmallSuccessAlert } from "../../../libs/sweetAlerts";
 
 export default function UserPage() {
   const { authMember } = useGlobals();
   const history = useHistory();
+  const email = authMember?.memberEmail ?? "";
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500); // Reset after 1.5 sec
+      sweetTopSmallSuccessAlert("Email Copied", 700);
+    });
+  };
   if (!authMember) history.push("/");
   return (
     <Container className="user-page">
@@ -31,7 +43,7 @@ export default function UserPage() {
           <Avatar
             src={
               authMember?.memberImage
-                ? authMember.memberImage
+                ? `${serverApi}/${authMember.memberImage}`
                 : "/images/book1.png"
             }
             alt=""
@@ -51,8 +63,11 @@ export default function UserPage() {
           </Chip>
           <Typography level="title-lg">{authMember?.memberNick}</Typography>
           <Typography level="body-sm" sx={{ maxWidth: "24ch" }}>
-            {authMember?.memberDescription?.slice(0, 120)}
+            {authMember?.memberDescription?.slice(0, 85)}
           </Typography>
+          <Chip component="span" size="md" variant="soft" color="neutral">
+            {authMember?.memberPoints} points!
+          </Chip>
           <Box
             sx={{
               display: "flex",
@@ -133,8 +148,9 @@ export default function UserPage() {
               variant="outlined"
               sx={{ bgcolor: "background.surface" }}
             >
-              <Button>Message</Button>
-              <Button>Connect</Button>
+              <Button onClick={handleCopy} variant="soft" color="success">
+                Copy Email
+              </Button>
             </ButtonGroup>
           </CardActions>
         </CardOverflow>
