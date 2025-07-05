@@ -90,7 +90,7 @@ export function Settings() {
       <Box className={"member-media-frame"}>
         <img src={file} className={"memberImage"} alt="" />
 
-        <Typography level="body-sm">JPG, JPEG, PNG formats only!</Typography>
+        <Typography level="body-sm">jpg, jpeg, jpg formats!</Typography>
         <div className={"up-del-box"}>
           <Button
             component="label"
