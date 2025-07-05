@@ -62,7 +62,7 @@ const MainBanner = () => {
           </Paper>
           <Paper elevation={3}>
             {" "}
-            <img className="book3" src="/images/book7.jpg" alt="book1" />
+            <img className="book3" src="/images/book5.jpg" alt="book1" />
           </Paper>
         </Stack>
       </Container>

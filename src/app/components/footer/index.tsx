@@ -31,11 +31,23 @@ export default function Footer() {
               wish!
             </Typography>
             <Box className="sns-context">
-              <img alt="facebook_icon" src={"/images/face.svg"} height={40} />
-              <img alt="pinterest_icon" src={"/images/pin.svg"} height={40} />
-              <img alt="reddit_icon" src={"/images/reddit.svg"} height={40} />
-              <img alt="instagram_icon" src={"/images/i.svg"} height={40} />
-              <img alt="youtube_icon" src={"/images/youtube.svg"} height={40} />
+              <img
+                alt="facebook_icon"
+                src={"/images/facebook.png"}
+                height={35}
+              />
+              <img
+                alt="pinterest_icon"
+                src={"/images/pinterest.png"}
+                height={35}
+              />
+              <img alt="reddit_icon" src={"/images/reddit.png"} height={35} />
+              <img
+                alt="instagram_icon"
+                src={"/images/instagram.png"}
+                height={35}
+              />
+              <img alt="youtube_icon" src={"/images/youtube.png"} height={35} />
             </Box>
           </Stack>
           <Stack className="links" flexDirection={"row"}>
