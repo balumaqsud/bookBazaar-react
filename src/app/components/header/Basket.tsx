@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import Menu from "@mui/material/Menu";
@@ -11,6 +11,8 @@ import { Messages, serverApi } from "../../../libs/config";
 import { sweetErrorHandling } from "../../../libs/sweetAlerts";
 import OrderService from "../../services/OrderService";
 import { useGlobals } from "../../hooks/useGlobals";
+import { Button, Card, Typography } from "@mui/joy";
+import { KeyboardArrowRight } from "@mui/icons-material";
 
 interface BasketProps {
   cardItems: CardItem[];
@@ -59,7 +61,7 @@ export default function Basket(props: BasketProps) {
   };
 
   return (
-    <Box className={"hover-line"}>
+    <>
       <IconButton
         aria-label="cart"
         id="basic-button"
@@ -73,6 +75,7 @@ export default function Basket(props: BasketProps) {
         </Badge>
       </IconButton>
       <Menu
+        className="basket-manu"
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
@@ -81,24 +84,26 @@ export default function Basket(props: BasketProps) {
         PaperProps={{
           elevation: 0,
           sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            mt: 1.5,
+            overflow: "invisible",
+            mt: 0,
+
             "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
               ml: -0.5,
               mr: 1,
+              paddingTop: 0,
+
+              backgroundColor: "black",
             },
             "&:before": {
               content: '""',
               display: "block",
               position: "absolute",
+              margin: 0,
+              paddingTop: 0,
               top: 0,
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: "background.paper",
               transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
@@ -107,14 +112,20 @@ export default function Basket(props: BasketProps) {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Stack className={"basket-frame"}>
+        <Card size="lg" variant="outlined" className="basket-frame">
           <Box className={"all-check-box"}>
             {cardItems.length === 0 ? (
               <div>Cart is empty!</div>
             ) : (
               <Stack className="basket_all">
                 <div>Card products</div>
-                <Button onClick={() => onDeleteAll()}>Clear All</Button>
+                <Button
+                  variant="soft"
+                  color="warning"
+                  onClick={() => onDeleteAll()}
+                >
+                  Clear All
+                </Button>
               </Stack>
             )}
           </Box>
@@ -125,44 +136,55 @@ export default function Basket(props: BasketProps) {
 
                 return (
                   <Box className={"basket-info-box"} key={item._id}>
-                    <div className={"cancel-btn"}>
-                      <CancelIcon
-                        color={"primary"}
-                        onClick={() => {
-                          console.log("clicked");
-                          onDelete(item);
-                        }}
-                      />
-                    </div>
                     <img
                       alt="fresh"
                       src={imagePath}
                       className={"product-img"}
                     />
-                    <span className={"product-name"}>{item.name}</span>
-                    <p className={"product-price"}>
-                      ${item.price} x {item.quantity}
-                    </p>
-                    <Box sx={{ minWidth: 120 }}>
+                    <div className="info">
+                      <Typography level="body-md">
+                        {item.name.slice(0, 13) + "..."}
+                      </Typography>
+                      <Typography level="body-sm">
+                        ${item.price} x {item.quantity}
+                      </Typography>
+                    </div>
+
+                    <Box sx={{ minWidth: 100 }}>
                       <div className="col-2">
-                        <button
-                          className="remove"
+                        <Button
+                          size="sm"
+                          variant="plain"
+                          color="warning"
                           onClick={() => {
                             console.log("clicked");
                             onRemove(item);
                           }}
                         >
                           -
-                        </button>{" "}
-                        <button
-                          className="add"
+                        </Button>{" "}
+                        <Button
+                          size="sm"
+                          variant="plain"
+                          color="success"
                           onClick={() => {
                             console.log("clicked");
                             onAdd(item);
                           }}
                         >
                           +
-                        </button>
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="plain"
+                          color="danger"
+                          onClick={() => {
+                            console.log("clicked");
+                            onDelete(item);
+                          }}
+                        >
+                          x
+                        </Button>
                       </div>
                     </Box>
                   </Box>
@@ -172,20 +194,19 @@ export default function Basket(props: BasketProps) {
           </Box>
           {cardItems.length !== 0 ? (
             <Box className={"basket-order"}>
-              <span className={"price"}>
-                Total: ${totalPrice}: ${itemsPrice} + ${shippingCost}
-              </span>
+              <Typography color="neutral">Total: ${totalPrice}</Typography>
               <Button
-                startIcon={<ShoppingCartIcon />}
-                variant={"contained"}
+                endDecorator={<KeyboardArrowRight />}
+                variant={"soft"}
+                color="success"
                 onClick={orderProcessHandler}
               >
                 Order
               </Button>
             </Box>
           ) : null}
-        </Stack>
+        </Card>
       </Menu>
-    </Box>
+    </>
   );
 }
