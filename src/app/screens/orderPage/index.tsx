@@ -103,8 +103,8 @@ const OrderPage = () => {
                 <div className="order-user-icon-box">
                   <img
                     src={
-                      authMember?.memberType === MemberType.RESTAURANT
-                        ? "/icons/restaurant.svg"
+                      authMember?.memberType === MemberType.ADMIN
+                        ? "/images/book1.svg"
                         : "/icons/user-badge.svg"
                     }
                     alt=""

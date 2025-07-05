@@ -8,8 +8,8 @@ const Brands = () => {
         <img src="images/hach.png" alt="hash" />
         <img src="images/har.png" alt="harper" />
         <img src="images/nac.png" alt="macm" />
-        <img src="images/Simon_logo.webp" alt="simon" />
-        <img src="images/pen.webp" alt="pen" />
+        <img src="images/sim.png" alt="simon" />
+        <img src="images/pen.png" alt="pen" />
       </Container>
     </div>
   );
