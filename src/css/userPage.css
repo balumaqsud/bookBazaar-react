@@ -12,7 +12,7 @@
 .settings {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
   justify-content: start;
   align-items: start;
   gap: 20px;
@@ -24,16 +24,14 @@
   flex-direction: column;
   gap: 10px;
 }
+
 .memberImage {
   width: 200px;
   height: 200px;
   border-radius: 50%;
 }
-label {
-  color: grey;
-}
 input {
-  width: 600px;
+  width: 610px;
   height: 30px;
   border-radius: 10% white;
 }
