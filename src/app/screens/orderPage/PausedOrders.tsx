@@ -153,11 +153,7 @@ const PausedOrders = (props: PausedProps) => {
               flexDirection={"row"}
               justifyContent={"center"}
             >
-              <img
-                src={"/images/book1.jpg"}
-                style={{ width: 300, height: 300 }}
-                alt=""
-              />
+              s
             </Box>
           ))}
       </Stack>
