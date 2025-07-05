@@ -154,7 +154,7 @@ const PausedOrders = (props: PausedProps) => {
               justifyContent={"center"}
             >
               <img
-                src={"/icons/noimage-list.svg"}
+                src={"/images/book1.jpg"}
                 style={{ width: 300, height: 300 }}
                 alt=""
               />

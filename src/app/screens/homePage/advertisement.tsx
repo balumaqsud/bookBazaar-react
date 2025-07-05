@@ -10,12 +10,7 @@ export default function Advertisement() {
     >
       <Card component="li" sx={{ minWidth: "100%", height: 540, flexGrow: 1 }}>
         <CardCover>
-          <video
-            autoPlay
-            loop
-            muted
-            poster="https://assets.codepen.io/6093409/river.jpg"
-          >
+          <video autoPlay loop muted poster="/images/book7.png">
             <source src="/images/vid.mp4" type="video/mp4" />
           </video>
         </CardCover>
