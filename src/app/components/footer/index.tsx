@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Box, Container, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -28,14 +28,13 @@ const randomBookRetriever = createSelector(
 export default function Footer() {
   const { randomBooks } = useSelector(randomBookRetriever);
 
-  const history = useHistory();
-  const randomHandler = () => {
-    if (!randomBooks || randomBooks.length === 0) return;
-
+  const randomBook = useMemo(() => {
+    if (!randomBooks || randomBooks.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * randomBooks.length);
-    const id = randomBooks[randomIndex]._id;
-    history.push(`/books/${id}`);
-  };
+    return randomBooks[randomIndex];
+  }, [randomBooks]);
+
+  const featuredBook = randomBooks?.[0];
   return (
     <Footers>
       <Container>
@@ -77,6 +76,7 @@ export default function Footer() {
               <Typography level="title-lg">Help</Typography>
               <Box className={"foot-category-link"}>
                 <Link to="/member-page">Prolife</Link>
+                <Link to="/orders">My Orders</Link>
                 <Link to="/help#terms">Terms</Link>
                 <Link to="/help#faq">FAQ</Link>
                 <Link to="/help#contact">Contact</Link>
@@ -87,11 +87,12 @@ export default function Footer() {
               <Typography level="title-lg">Book Bazaar</Typography>
               <Box className={"foot-category-link"}>
                 <Link to="/">Home</Link>
-                <Button onClick={randomHandler}>
-                  <Link to="/books">Book Library</Link>
-                </Button>
-
-                <Link to="/orders">My Orders</Link>
+                {featuredBook && (
+                  <Link to={`/books/${featuredBook._id}`}>Featured Book</Link>
+                )}
+                {randomBook && (
+                  <Link to={`/books/${randomBook._id}`}>Random Book</Link>
+                )}
               </Box>
             </Box>
 
