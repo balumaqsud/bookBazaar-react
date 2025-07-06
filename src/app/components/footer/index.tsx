@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../../../css/footer.css";
 import Typography from "@mui/joy/Typography";
+import { useHistory } from "react-router-dom";
+import { retrieveRandomBook } from "../../screens/homePage/selector";
+import { useSelector } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
+import { Button } from "@mui/joy";
 
 const Footers = styled.div`
   width: 100%;
@@ -13,7 +18,24 @@ const Footers = styled.div`
   background-size: cover;
 `;
 
+const randomBookRetriever = createSelector(
+  retrieveRandomBook,
+  (randomBooks) => ({
+    randomBooks,
+  })
+);
+
 export default function Footer() {
+  const { randomBooks } = useSelector(randomBookRetriever);
+
+  const history = useHistory();
+  const randomHandler = () => {
+    if (!randomBooks || randomBooks.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * randomBooks.length);
+    const id = randomBooks[randomIndex]._id;
+    history.push(`/books/${id}`);
+  };
   return (
     <Footers>
       <Container>
@@ -65,7 +87,10 @@ export default function Footer() {
               <Typography level="title-lg">Book Bazaar</Typography>
               <Box className={"foot-category-link"}>
                 <Link to="/">Home</Link>
-                <Link to="/books">Book Library</Link>
+                <Button onClick={randomHandler}>
+                  <Link to="/books">Book Library</Link>
+                </Button>
+
                 <Link to="/orders">My Orders</Link>
               </Box>
             </Box>
