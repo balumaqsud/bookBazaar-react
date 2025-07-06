@@ -122,21 +122,13 @@
   align-items: center;
 }
 
-.chosen-frame .chosen-title {
-  font-size: 36px;
-  color: grey;
-  margin: 20px;
-  margin-left: 5px;
-}
-
 .chosen-product-slider {
   width: 95%;
   height: 520px;
   margin-top: 20px;
-  background: #ffffff;
   box-shadow:
-    9px 13px 14px 5px rgba(0, 0, 0, 0.25),
-    inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
+    5px 14px 14px 5px rgba(0, 0, 0, 0.12),
+    inset -1px 2px 3px 3px rgba(0, 0, 0, 0.15);
   border-radius: 16px;
   overflow: hidden;
 }

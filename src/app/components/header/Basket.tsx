@@ -1,9 +1,8 @@
 import React from "react";
 import { Box, Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
+import Badge from "@mui/joy/Badge";
 import Menu from "@mui/material/Menu";
-import CancelIcon from "@mui/icons-material/Cancel";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useHistory } from "react-router-dom";
 import { CardItem } from "../../../libs/types/search";
@@ -70,7 +69,7 @@ export default function Basket(props: BasketProps) {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <Badge badgeContent={cardItems.length} color="secondary">
+        <Badge badgeContent={cardItems.length} color="neutral" size="sm">
           <ShoppingCartIcon />
         </Badge>
       </IconButton>
