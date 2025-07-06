@@ -23,40 +23,16 @@ const processOrdersRetriever = createSelector(
   })
 );
 
-interface PausedProps {
+interface ProcessProps {
   setValue: (input: string) => void;
 }
-
-const PausedOrders = (props: PausedProps) => {
+const PausedOrders = (props: ProcessProps) => {
   const { setValue } = props;
-  const { processOrders } = useSelector(processOrdersRetriever);
   const { authMember, setOrderBuilder } = useGlobals();
+  const { processOrders } = useSelector(processOrdersRetriever);
 
-  //hanlders
-  const deleteHandler = async (e: T) => {
-    try {
-      if (!authMember) throw new Error(Messages.error2);
-      const orderId = e.target.value;
-      const input: OrderUpdateInput = {
-        orderId: orderId,
-        orderStatus: OrderStatus.DELETE,
-      };
-
-      const confirm = window.confirm("wanna delete");
-
-      if (confirm) {
-        const order = new OrderService();
-        await order.updateOrder(input);
-        //rebuild logic
-        setOrderBuilder(new Date());
-      }
-    } catch (error) {
-      console.log(error);
-      sweetErrorHandling(error).then();
-    }
-  };
-
-  const processHandler = async (e: T) => {
+  //handlers
+  const finishHandler = async (e: T) => {
     try {
       if (!authMember) throw new Error(Messages.error2);
       const orderId = e.target.value;
@@ -65,13 +41,13 @@ const PausedOrders = (props: PausedProps) => {
         orderStatus: OrderStatus.FINISH,
       };
 
-      const confirm = window.confirm("wanna proceed");
+      const confirm = window.confirm("you got it?");
 
       if (confirm) {
         const order = new OrderService();
         await order.updateOrder(input);
         //rebuild logic
-        setValue("2");
+        setValue("3");
         setOrderBuilder(new Date());
       }
     } catch (error) {
@@ -81,7 +57,7 @@ const PausedOrders = (props: PausedProps) => {
   };
 
   return (
-    <TabPanel value="1">
+    <TabPanel value="2">
       <Stack>
         {processOrders?.map((order: Order) => {
           return (
@@ -135,19 +111,12 @@ const PausedOrders = (props: PausedProps) => {
                 <Typography level="body-md" color="neutral">
                   Total: ${order.orderTotal}
                 </Typography>
-                <Button
-                  value={order._id}
-                  variant="outlined"
-                  color="warning"
-                  onClick={deleteHandler}
-                >
-                  Cancel
-                </Button>
+
                 <Button
                   value={order._id}
                   variant="outlined"
                   color="success"
-                  onClick={processHandler}
+                  onClick={finishHandler}
                 >
                   Payment
                 </Button>

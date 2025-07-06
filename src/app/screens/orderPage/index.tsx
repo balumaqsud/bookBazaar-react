@@ -32,7 +32,7 @@ import { Typography } from "@mui/joy";
 import "../../../css/userPage.css";
 import { sweetTopSmallSuccessAlert } from "../../../libs/sweetAlerts";
 import "../../../css/order.css";
-import { MemberStatus, MemberType } from "../../../libs/data/enums/member.enum";
+
 //REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
   setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
@@ -55,16 +55,6 @@ const OrderPage = () => {
     orderStatus: OrderStatus.PAUSE,
   });
 
-  const email = authMember?.memberEmail ?? "";
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(email).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-      sweetTopSmallSuccessAlert("Email Copied", 700);
-    });
-  };
   //here
   useEffect(() => {
     const order = new OrderService();
@@ -86,6 +76,17 @@ const OrderPage = () => {
 
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
+  };
+  ///
+  const email = authMember?.memberEmail ?? "";
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+      sweetTopSmallSuccessAlert("Email Copied", 700);
+    });
   };
   return (
     <div className="order-page">
