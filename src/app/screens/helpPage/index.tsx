@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Container, Stack, Tabs } from "@mui/material";
 import Tab from "@mui/material/Tab";
 import Accordion from "@mui/material/Accordion";
@@ -12,14 +12,26 @@ import { faq } from "../../../libs/data/faq";
 import { terms } from "../../../libs/data/terms";
 import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
+import { useLocation } from "react-router-dom";
 
 export default function HelpPage() {
   const [value, setValue] = React.useState("1");
+  const location = useLocation();
 
   /** HANDLERS **/
   const handleChange = (e: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    if (location.hash === "#contact") {
+      setValue("3");
+    } else if (location.hash === "#faq") {
+      setValue("2");
+    } else {
+      setValue("1");
+    }
+  }, [location.hash]);
 
   return (
     <div className={"help-page"}>
@@ -41,83 +53,94 @@ export default function HelpPage() {
           </Box>
           <Stack>
             <Stack className={"help-main-content"}>
-              <TabPanel value={"1"}>
-                <Stack className={"rules-box"}>
-                  <Box className={"rules-frame"}>
-                    {terms.map((value, number) => {
-                      return <Typography key={number}>{value}</Typography>;
-                    })}
-                  </Box>
-                </Stack>
-              </TabPanel>
-              <TabPanel value={"2"} sx={{ width: "100%" }}>
-                <Stack className={"accordion-menu"}>
-                  {faq.map((value, number) => {
-                    return (
-                      <Accordion key={number}>
-                        <AccordionSummary
-                          expandIcon={<ExpandMoreIcon />}
-                          aria-controls="panel1a-content"
-                          id="panel1a-header"
-                        >
-                          <Typography>{value.question}</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                          <Typography>{value.answer}</Typography>
-                        </AccordionDetails>
-                      </Accordion>
-                    );
-                  })}
-                </Stack>
-              </TabPanel>
-              <TabPanel value={"3"}>
-                <Stack className={"admin-letter-box"}>
-                  <Stack className={"admin-letter-container"}>
-                    <Box className={"admin-letter-frame"}>
-                      <p>Contact us!</p>
-                      <p>Fill out below form to send a message!</p>
+              <section id="terms">
+                <TabPanel value={"1"}>
+                  <Stack className={"rules-box"}>
+                    <Box className={"rules-frame"}>
+                      {terms.map((value, number) => {
+                        return <Typography key={number}>{value}</Typography>;
+                      })}
                     </Box>
-                    <form
-                      action={"#"}
-                      method={"POST"}
-                      className={"admin-letter-frame"}
-                    >
-                      <div className={"admin-input-box"}>
-                        <label>Your name</label>
-                        <input
-                          type={"text"}
-                          name={"memberNick"}
-                          placeholder={"Type your name here"}
-                        />
-                      </div>
-                      <div className={"admin-input-box"}>
-                        <label>Your email</label>
-                        <input
-                          type={"text"}
-                          name={"memberEmail"}
-                          placeholder={"Type your email here"}
-                        />
-                      </div>
-                      <div className={"admin-input-box"}>
-                        <label>Message</label>
-                        <textarea
-                          name={"memberMsg"}
-                          placeholder={"Your message"}
-                        ></textarea>
-                      </div>
-                      <Box
-                        display={"flex"}
-                        justifyContent={"flex-end"}
-                        sx={{ mt: "30px" }}
-                      >
-                        <Button size="lg" variant={"outlined"} color="success">
-                          Send Message
-                        </Button>
-                      </Box>
-                    </form>
                   </Stack>
-                </Stack>
-              </TabPanel>
+                </TabPanel>
+              </section>
+
+              <section id="faq">
+                <TabPanel value={"2"} sx={{ width: "100%" }}>
+                  <Stack className={"accordion-menu"}>
+                    {faq.map((value, number) => {
+                      return (
+                        <Accordion key={number}>
+                          <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                          >
+                            <Typography>{value.question}</Typography>
+                          </AccordionSummary>
+                          <AccordionDetails>
+                            <Typography>{value.answer}</Typography>
+                          </AccordionDetails>
+                        </Accordion>
+                      );
+                    })}
+                  </Stack>
+                </TabPanel>
+              </section>
+              <section id="contact">
+                <TabPanel value={"3"}>
+                  <Stack className={"admin-letter-box"}>
+                    <Stack className={"admin-letter-container"}>
+                      <Box className={"admin-letter-frame"}>
+                        <p>Contact us!</p>
+                        <p>Fill out below form to send a message!</p>
+                      </Box>
+                      <form
+                        action={"#"}
+                        method={"POST"}
+                        className={"admin-letter-frame"}
+                      >
+                        <div className={"admin-input-box"}>
+                          <label>Your name</label>
+                          <input
+                            type={"text"}
+                            name={"memberNick"}
+                            placeholder={"Type your name here"}
+                          />
+                        </div>
+                        <div className={"admin-input-box"}>
+                          <label>Your email</label>
+                          <input
+                            type={"text"}
+                            name={"memberEmail"}
+                            placeholder={"Type your email here"}
+                          />
+                        </div>
+                        <div className={"admin-input-box"}>
+                          <label>Message</label>
+                          <textarea
+                            name={"memberMsg"}
+                            placeholder={"Your message"}
+                          ></textarea>
+                        </div>
+                        <Box
+                          display={"flex"}
+                          justifyContent={"flex-end"}
+                          sx={{ mt: "30px" }}
+                        >
+                          <Button
+                            size="lg"
+                            variant={"outlined"}
+                            color="success"
+                          >
+                            Send Message
+                          </Button>
+                        </Box>
+                      </form>
+                    </Stack>
+                  </Stack>
+                </TabPanel>
+              </section>
             </Stack>
           </Stack>
         </TabContext>

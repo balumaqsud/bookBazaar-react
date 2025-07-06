@@ -3,13 +3,34 @@ import { Button } from "@mui/joy";
 import React from "react";
 import Typography from "@mui/joy/Typography";
 import { useHistory } from "react-router-dom";
+import { retrieveRandomBook } from "./selector";
+import { useSelector } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
+
+const randomBookRetriever = createSelector(
+  retrieveRandomBook,
+  (randomBooks) => ({
+    randomBooks,
+  })
+);
 
 const MainBanner = () => {
+  const { randomBooks } = useSelector(randomBookRetriever);
+
   const history = useHistory();
 
   const chosenHandler = () => {
     history.push(`/books`);
   };
+
+  const randomHandler = () => {
+    if (!randomBooks || randomBooks.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * randomBooks.length);
+    const id = randomBooks[randomIndex]._id;
+    history.push(`/books/${id}`);
+  };
+
   return (
     <div className="banner-frame">
       <Container className="banner-container">
@@ -42,7 +63,12 @@ const MainBanner = () => {
             </Typography>
           </Box>
           <Box className="main-buttons">
-            <Button size="lg" variant="soft" color="warning">
+            <Button
+              size="lg"
+              variant="soft"
+              color="warning"
+              onClick={randomHandler}
+            >
               Random Book
             </Button>
             <Button

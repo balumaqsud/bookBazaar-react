@@ -54,21 +54,19 @@ export default function Footer() {
             <Box className="categories">
               <Typography level="title-lg">Help</Typography>
               <Box className={"foot-category-link"}>
-                <Link to="/user-page">My Page</Link>
-                <Link to="/order">My Orders</Link>
-                <Link to="/help">Terms/FAQ</Link>
-                <Link to="/contact">Contact</Link>
+                <Link to="/member-page">Prolife</Link>
+                <Link to="/help#terms">Terms</Link>
+                <Link to="/help#faq">FAQ</Link>
+                <Link to="/help#contact">Contact</Link>
               </Box>
             </Box>
 
             <Box className="categories">
               <Typography level="title-lg">Book Bazaar</Typography>
               <Box className={"foot-category-link"}>
-                <Link to="/user-page">Home</Link>
-                <Link to="/order">Book Library</Link>
-                <Link to="/help">Random Book</Link>
-                <Link to="/contact">Latest Books</Link>
-                <Link to="/contact">Best Sellers</Link>
+                <Link to="/">Home</Link>
+                <Link to="/books">Book Library</Link>
+                <Link to="/orders">My Orders</Link>
               </Box>
             </Box>
 

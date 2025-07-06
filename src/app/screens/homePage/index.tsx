@@ -78,12 +78,12 @@ const HomePage = (props: HomeProps) => {
     //random
     products
       .getProducts({
-        page: 3,
-        limit: 1,
+        page: 1,
+        limit: 10,
         order: "productLeftCount",
       })
       .then((data) => {
-        console.log("came here:", data);
+        console.log("came radom here:", data);
         setRandomBook(data);
       })
       .catch((err) => console.log(err));

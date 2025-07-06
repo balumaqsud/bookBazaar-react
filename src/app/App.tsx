@@ -16,6 +16,7 @@ import Footer from "./components/footer";
 import AuthenticationModal from "./components/auth";
 import "../css/header.css";
 import "../css/footer.css";
+import ScrollToTop from "./components/scrollTop";
 
 function App() {
   const location = useLocation();
@@ -63,7 +64,7 @@ function App() {
         handleCloseLogout={handleCloseLogout}
         handleLogoutRequest={handleLogoutRequest}
       />
-
+      <ScrollToTop />
       <Switch>
         <Route path="/orders">
           <OrderPage />
