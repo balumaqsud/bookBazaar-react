@@ -21,20 +21,10 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 2, 2),
+    boxShadow: theme.shadows[3],
+    padding: theme.spacing(1.5, 1.5, 1.5),
   },
 }));
-
-const ModalImg = styled.img`
-  width: 62%;
-  height: 100%;
-  border-radius: 10px;
-  background: #000;
-  margin-top: 9px;
-  margin-left: 10px;
-`;
 
 interface AuthenticationModalProps {
   signupOpen: boolean;
@@ -134,7 +124,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "400px" }}
+            sx={{ width: "360px", borderRadius: 4, pb: 2 }}
           >
             <Stack sx={{ width: "100%", alignItems: "center" }}>
               <h1>Signup Form</h1>
@@ -163,7 +153,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
               <Fab
                 sx={{ marginTop: "30px", width: "100%", marginBottom: "20px" }}
                 variant="extended"
-                color="primary"
+                color="success"
                 onClick={signupRequestHandler}
                 onKeyDown={handlePasswordKeyDown}
               >
@@ -191,7 +181,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
           <Stack
             className={classes.paper}
             direction={"row"}
-            sx={{ width: "400px" }}
+            sx={{ width: "360px", borderRadius: 4, pb: 3, pt: 3 }}
           >
             <Stack
               sx={{
@@ -219,8 +209,8 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
               />
               <Fab
                 sx={{ marginTop: "27px", width: "100%", marginBottom: "20px" }}
-                variant={"extended"}
-                color={"primary"}
+                variant="extended"
+                color="success"
                 onClick={loginRequestHandler}
               >
                 <LoginIcon sx={{ mr: 1 }} />
