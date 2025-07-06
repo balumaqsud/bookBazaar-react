@@ -51,7 +51,7 @@ export default function Footer() {
               Book Bazar is your online store, where you can find any book you
               wish!
             </Typography>
-            <Box className="sns-context">
+            <Box className="sns-context" sx={{ gap: 2 }}>
               <img
                 alt="facebook_icon"
                 src={"/images/facebook.png"}
@@ -76,7 +76,6 @@ export default function Footer() {
               <Typography level="title-lg">Help</Typography>
               <Box className={"foot-category-link"}>
                 <Link to="/member-page">Prolife</Link>
-                <Link to="/orders">My Orders</Link>
                 <Link to="/help#terms">Terms</Link>
                 <Link to="/help#faq">FAQ</Link>
                 <Link to="/help#contact">Contact</Link>
@@ -87,6 +86,7 @@ export default function Footer() {
               <Typography level="title-lg">Book Bazaar</Typography>
               <Box className={"foot-category-link"}>
                 <Link to="/">Home</Link>
+                <Link to="/orders">Orders</Link>
                 {featuredBook && (
                   <Link to={`/books/${featuredBook._id}`}>Featured Book</Link>
                 )}

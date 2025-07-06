@@ -161,6 +161,7 @@ const Products = (props: ProductsProps) => {
                 <Menu>
                   <MenuItem>
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory === ProductCategory.KIDS
@@ -176,6 +177,7 @@ const Products = (props: ProductsProps) => {
                   </MenuItem>
                   <MenuItem>
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory === ProductCategory.HORROR
@@ -191,6 +193,7 @@ const Products = (props: ProductsProps) => {
                   </MenuItem>
                   <MenuItem>
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory ===
@@ -208,6 +211,7 @@ const Products = (props: ProductsProps) => {
                   <MenuItem>
                     {" "}
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory ===
@@ -225,6 +229,7 @@ const Products = (props: ProductsProps) => {
                   <MenuItem>
                     {" "}
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory === ProductCategory.POETRY
@@ -241,6 +246,7 @@ const Products = (props: ProductsProps) => {
                   <MenuItem>
                     {" "}
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory ===
@@ -258,6 +264,7 @@ const Products = (props: ProductsProps) => {
                   <MenuItem>
                     {" "}
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory ===
@@ -275,6 +282,7 @@ const Products = (props: ProductsProps) => {
                   <MenuItem>
                     {" "}
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory ===
@@ -292,6 +300,7 @@ const Products = (props: ProductsProps) => {
                   <MenuItem>
                     {" "}
                     <Button
+                      sx={{ width: "100%" }}
                       variant="plain"
                       color={
                         productSearch.productCategory ===
