@@ -90,7 +90,7 @@ const HomePage = (props: HomeProps) => {
 
     products
       .getProducts({
-        page: 3,
+        page: 1,
         limit: 1,
         order: "productLeftCount",
       })

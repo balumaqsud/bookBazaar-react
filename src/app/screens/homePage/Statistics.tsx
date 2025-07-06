@@ -7,7 +7,7 @@ const Statistics = () => {
       <Container className="brand-container">
         <img src="images/hach.png" alt="hash" />
         <img src="images/har.png" alt="harper" />
-        <img src="images/nac.png" alt="macm" />
+        <img src="images/nac.png" alt="mac" />
         <img src="images/Simon_logo.webp" alt="simon" />
         <img src="images/pen.webp" alt="pen" />
       </Container>

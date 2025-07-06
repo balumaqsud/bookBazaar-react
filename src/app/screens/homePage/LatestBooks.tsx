@@ -93,7 +93,7 @@ const LatestBooks = (props: HomeProps) => {
                       </Chip>
                     }
                   >
-                    {ele.productName}
+                    {ele.productName.slice(0, 24) + "..."}
                   </Typography>
                   <Typography level="body-sm">
                     (Only <b>{ele.productLeftCount}</b> left in stock!)
