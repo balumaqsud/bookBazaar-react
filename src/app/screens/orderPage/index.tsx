@@ -32,6 +32,7 @@ import { Typography } from "@mui/joy";
 import "../../../css/userPage.css";
 import { sweetTopSmallSuccessAlert } from "../../../libs/sweetAlerts";
 import "../../../css/order.css";
+import { T } from "../../../libs/types/common";
 
 //REDUX SLICE
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -54,10 +55,9 @@ const OrderPage = () => {
     limit: 5,
     orderStatus: OrderStatus.PAUSE,
   });
-
+  const order = new OrderService();
   //here
   useEffect(() => {
-    const order = new OrderService();
     order
       .getOrders({ ...orderInquiry, orderStatus: OrderStatus.PAUSE })
       .then((data) => setPausedOrders(data))
@@ -74,10 +74,30 @@ const OrderPage = () => {
       .catch((err) => console.log(err));
   }, [orderInquiry, orderBuilder]);
 
+  /** HANDLERS **/
+  const paginationHandler = (e: T, page: number) => {
+    orderInquiry.page = page;
+    setOrderInquiry({ ...orderInquiry });
+  };
+
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
+    switch (newValue || value) {
+      case "1":
+        orderInquiry.orderStatus = OrderStatus.PAUSE;
+        setOrderInquiry({ ...orderInquiry });
+        break;
+      case "2":
+        orderInquiry.orderStatus = OrderStatus.PROCESS;
+        setOrderInquiry({ ...orderInquiry });
+        break;
+      case "3":
+        setOrderInquiry({ ...orderInquiry, orderStatus: OrderStatus.FINISH });
+        break;
+      default:
+        break;
+    }
   };
-  ///
   const email = authMember?.memberEmail ?? "";
   const [copied, setCopied] = useState(false);
 

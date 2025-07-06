@@ -31,6 +31,7 @@ import Dropdown from "@mui/joy/Dropdown";
 import Menu from "@mui/joy/Menu";
 import MenuButton from "@mui/joy/MenuButton";
 import MenuItem from "@mui/joy/MenuItem";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import "../../../css/product.css";
 
 //REDUX SLICE
@@ -49,20 +50,10 @@ const Products = (props: ProductsProps) => {
   const { onAdd } = props;
   const { setProducts } = actionDispatch(useDispatch());
   const { products } = useSelector(productsRetriever);
-  const [productSearch, setProductSearch] = useState({
+  const [productSearch, setProductSearch] = useState<ProductInquiry>({
     page: 1,
     limit: 8,
     order: "createdAt",
-    productCategory:
-      ProductCategory.POETRY ||
-      ProductCategory.ROMANCE ||
-      ProductCategory.FANTASY ||
-      ProductCategory.HISTORY ||
-      ProductCategory.HORROR ||
-      ProductCategory.SCIENCE_FICTION ||
-      ProductCategory.THRILLER ||
-      ProductCategory.ROMANCE ||
-      ProductCategory.ADVENTURE,
     search: "",
   });
 
@@ -114,6 +105,12 @@ const Products = (props: ProductsProps) => {
     history.push(`/books/${productId}`);
   };
 
+  const clearCategoryHandler = () => {
+    productSearch.page = 1;
+    delete productSearch.productCategory; // ❗ Remove the category key
+    setProductSearch({ ...productSearch });
+  };
+
   return (
     <div className="products">
       <Container>
@@ -153,6 +150,14 @@ const Products = (props: ProductsProps) => {
             <Stack className="filter-box">
               <Dropdown>
                 <MenuButton>Category...</MenuButton>
+                <Button
+                  color="neutral"
+                  size="sm"
+                  onClick={clearCategoryHandler}
+                  variant="plain"
+                >
+                  <RefreshIcon />
+                </Button>
                 <Menu>
                   <MenuItem>
                     <Button
