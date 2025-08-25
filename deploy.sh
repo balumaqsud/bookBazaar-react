@@ -7,7 +7,7 @@ git pull origin main
 
 npm install -g yarn
 yarn global remove serve
-yarn global add serve@13
+yarn global add serve@13.0.2
 yarn install
 yarn build
 
