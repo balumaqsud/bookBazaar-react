@@ -6,11 +6,13 @@ git checkout main
 git pull origin main
 
 
-npm i yarn -g
+npm install -g yarn
 yarn global add serve
 yarn
 yarn build
 
-pm2 start "yarn run start:prod" --name=BookBazaar
+pm2 start yarn --name=BookBazaar -- run start:prod
+
+
 
 
