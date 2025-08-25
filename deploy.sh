@@ -11,4 +11,4 @@ yarn global add serve
 yarn 
 yarn run build
 
-pm2 start "yarn run start:prod" --name=BookBazaar-react
+pm2 restart BookBazaar-react || pm2 start npx --name BookBazaar-react -- serve -s build -l 3000
