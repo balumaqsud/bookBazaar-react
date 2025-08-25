@@ -12,8 +12,8 @@ cd /home/bookBazaar/bookBazaar-react
 # 2. Pull latest code
 # --------------------------
 git reset --hard
-git checkout master
-git pull origin master
+git checkout main
+git pull origin main
 
 # --------------------------
 # 3. Ensure Node 18 is used
