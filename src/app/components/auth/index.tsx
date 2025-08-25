@@ -146,6 +146,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
               <TextField
                 id="outlined-basic"
                 label="password"
+                type="password"
                 variant="outlined"
                 sx={{ width: "100%" }}
                 onChange={passwordHandler}
