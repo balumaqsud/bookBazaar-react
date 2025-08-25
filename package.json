@@ -1,6 +1,6 @@
 {
   "name": "Bookbazar-react",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -46,8 +46,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "start:prod": "serve -s build -l 3000",
     "test": "react-scripts test",
-    "start:prod": "serve -s build -l 80",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

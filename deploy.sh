@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# PRODUCTION
+#production
+
 git reset --hard
 git checkout main
 git pull origin main
 
-npm install -g yarn
-yarn install
-yarn build
+npm i yarn -g 
+yarn global add serve
+yarn 
+yarn run build
 
-# Start React frontend with PM2 (ESM-safe)
-pm2 restart bookBazaar-react || pm2 start npx --name bookBazaar-react -- serve -s build -l 80
+pm2 start "yarn run start:prod" --name=BookBazaar-react
