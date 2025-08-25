@@ -5,14 +5,9 @@ git reset --hard
 git checkout main 
 git pull origin main
 
-
 npm install -g yarn
 yarn global add serve
 yarn
 yarn build
 
-pm2 start yarn --name=BookBazaar -- run start:prod
-
-
-
-
+pm2 restart BookBazaar || pm2 start serve --name=BookBazaar -- -s build -l 3000
