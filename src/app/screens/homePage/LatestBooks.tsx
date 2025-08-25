@@ -7,7 +7,7 @@ import CardOverflow from "@mui/joy/CardOverflow";
 import Chip from "@mui/joy/Chip";
 import Link from "@mui/joy/Link";
 import Typography from "@mui/joy/Typography";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+
 import { Box, Container, Stack } from "@mui/material";
 import { retrieveLatestBooks } from "./selector";
 import { createSelector } from "@reduxjs/toolkit";
