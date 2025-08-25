@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#production
+# PRODUCTION
+git reset --hard 
+git checkout main 
+git pull origin main
 
-git reset --hard
-git checkout master
-git pull origin master 
 
-npm i yarn -g 
+npm i yarn -g
 yarn global add serve
-yarn 
-yarn run build
+yarn
+yarn build
 
-pm2 start "yarn run start:prod" --name=BOOKBAZAAR-REACT
+pm2 start "yarn run start:prod" --name=BookBazaar
