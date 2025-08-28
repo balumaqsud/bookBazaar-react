@@ -11,7 +11,6 @@ services:
       - PORT=3003
     - REACT_APP_API_URL=http://72.60.42.29:4004
 
-
     volumes:
       - ./:/usr/src/bookbazaar-react
       - /usr/src/bookbazaar-react/node_modules
