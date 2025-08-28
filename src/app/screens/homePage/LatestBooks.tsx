@@ -104,7 +104,7 @@ const LatestBooks = (props: HomeProps) => {
                     variant="solid"
                     color="danger"
                     size="lg"
-                    onClick={(e) => {
+                    onClick={(e: any) => {
                       console.log("clicked");
                       onAdd({
                         _id: ele._id,

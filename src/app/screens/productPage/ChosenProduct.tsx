@@ -139,7 +139,7 @@ export default function ChosenProduct(props: ChosenProductProps) {
                 size="lg"
                 variant={"soft"}
                 color="warning"
-                onClick={(e) => {
+                onClick={(e: any) => {
                   console.log("clicked");
                   onAdd({
                     _id: ele._id,

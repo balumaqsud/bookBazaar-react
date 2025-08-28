@@ -57,7 +57,7 @@ const FeaturedBook = (props: HomeProps) => {
                     size="lg"
                     variant={"soft"}
                     color="warning"
-                    onClick={(e) => {
+                    onClick={(e: any) => {
                       console.log("clicked");
                       onAdd({
                         _id: ele._id,

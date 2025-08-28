@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  bookbazaar-react:
+    container_name: bookbazaar-react
+    restart: always
+    image: node:20.10.0
+    ports:
+      - "4005:3003"
+    environment:
+      - PORT=3003
+      - REACT_APP_API_URL=http://72.60.42.29:4004/
+
+    volumes:
+      - ./:/usr/src/bookbazaar-react
+      - /usr/src/bookbazaar-react/node_modules
+    working_dir: /usr/src/bookbazaar-react
+    networks:
+      - client-network
+    # FOR PRODUCTION
+    command: bash -c "yarn install && yarn run build && yarn run start:prod"
+
+networks:
+  client-network:
+    driver: bridge

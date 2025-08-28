@@ -405,7 +405,7 @@ const Products = (props: ProductsProps) => {
                           variant="solid"
                           color="danger"
                           size="lg"
-                          onClick={(e) => {
+                          onClick={(e: any) => {
                             console.log("clicked");
                             onAdd({
                               _id: ele._id,
