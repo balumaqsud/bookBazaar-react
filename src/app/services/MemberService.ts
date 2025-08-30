@@ -82,7 +82,7 @@ class MemberService {
     try {
       const formData = new FormData();
       formData.append("memberNick", input.memberNick || "");
-      formData.append("memberPhone", input.memberEmail || "");
+      formData.append("memberEmail", input.memberEmail || "");
       formData.append("memberAddress", input.memberAddress || "");
       formData.append("memberDescription", input.memberDescription || "");
       formData.append("memberImage", input.memberImage || "");
